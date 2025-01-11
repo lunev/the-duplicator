@@ -1,0 +1,35 @@
+.switch {
+  @apply flex items-center gap-2;
+}
+
+.title {
+  @apply min-w-40 font-bold flex-1;
+}
+
+.label {
+  @apply relative inline-flex items-center;
+}
+
+.checkbox {
+  @apply sr-only;
+}
+
+.bar {
+  @apply w-8 h-4 p-0.5 flex bg-white border border-gray-300 dark:border-transparent rounded-full dark:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-sky-400;
+}
+
+.checkbox:checked + .bar {
+  @apply bg-sky-500 dark:bg-sky-700 border-sky-500 dark:border-transparent justify-end;
+}
+
+.dot {
+  @apply w-2.5 h-2.5 bg-gray-400 rounded-full;
+}
+
+.checkbox:checked + .bar .dot {
+  @apply bg-white;
+}
+
+.hint {
+  @apply text-xs opacity-80;
+}

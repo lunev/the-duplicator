@@ -1,62 +1,48 @@
-# Chrome Extension Boilerplate
+# The Duplicator Chrome Extension
 
-## Project Overview
+Streamline your workflow with the Duplicator Extension, a powerful tool for effortlessly duplicating Chrome tabs with URL parameters.
 
-A boilerplate for building Chrome extensions with React, Redux Persist, and Vite. This template includes the initial setup for a Chrome extension, ready to be customized to your needs.
+## Description
+
+Streamline your workflow with the Duplicator Extension, a powerful tool for effortlessly duplicating Chrome tabs with extra URL parameters. Whether you're an account manager or simply a user seeking efficiency, this extension is designed to save you time and enhance your browsing experience.
 
 ## Key Features
 
-- **Initial state**: Provides notes for example understanding and initial setup.
-- **Redux Persist**: Used for storing data in Chrome's storage.
-- **Tests**: Includes tests with Chrome's mock API to ensure functionality.
-- **Tailwind CSS**: For styling your extension with utility-first CSS.
-- **Initial Routing**: Set up routing for Dashboard and Preferences pages.
+- **Advanced and Basic Modes**: Tailor your duplication process with advanced mode, allowing you to manage your favorite URL parameters, or opt for the simplicity of basic mode.
+- **Unlimited Extra URL Parameters**: Add and manage an unlimited number of extra URL parameters to meet your specific needs.
+- **Keyboard Shortcuts**: Access the extension easily using keyboard shortcuts (CTRL/CMD + SHIFT + L + NUM [1-9]) for quick duplication.
+- **Export/Import Functionality**: Seamlessly transfer your configured parameters across devices with the export and import features.
 
-## Installation Instructions
+## Target Audience
 
-To get started with the project, follow these steps:
+Ideal for account managers and users who frequently duplicate tabs with additional URL parameters.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/lunev/chrome-extension-starter.git
-   ```
-2. Navigate to the project folder:
-   ```bash
-   cd chrome-extension-starter
-   ```
-3. Install the dependencies:
-   ```bash
-   npm install
-   ```
+## Use Cases
 
-## Usage
+Imagine you're on a tab with the URL "www.test.com." The Duplicator Extension allows you to duplicate the current tab's domain and add user parameters such as "/admin/" easily through the extension's popup input.
 
-Once the dependencies are installed, you can use the following commands:
+## Benefits
 
-- **Build the development unpackaged extension**:
-   ```bash
-   npm run build
-   ```
+- **Efficiency**: No more manual copying, pasting, and typing; duplicate tab domain with extra URL parameters in a single click.
+- **Customization**: Tailor your duplication with advanced mode or go for quick duplication with basic mode.
 
-- **Run tests**:
-   ```bash
-   npm run test
-   ```
+## Compatibility
 
-- **Run coverage tests**:
-   ```bash
-   npm run test:coverage
-   ```
+Compatible with Google Chrome on both Windows and Mac platforms.
 
-- **Create a .zip file for Chrome Web Store**:
-   ```bash
-   npm run zip
-   ```
+## Updates
 
-## Contributing
+Regular updates ensure the extension stays optimized for user activities and addresses any reported issues promptly.
 
-At this stage, contributions are not yet organized, but I am open to contributions. Feel free to open issues and pull requests!
+## User Interface
 
-## Contact Information
+The extension features a user-friendly popup with a list of user-added parameters. Customize your list, add, edit or delete parameters effortlessly. The input field at the footer allows you to type extra URL parameters.
 
-For any questions or feedback, visit my website at [lunevdev.com](https://lunevdev.com).
+## Instructions
+
+1. Install the extension.
+2. Pin the extension icon to the Google Chrome navbar.
+3. Open the Chrome tab URL you want to duplicate.
+4. Click the extension icon or use CMD/CTRL + SHIFT + L.
+5. Type an extra URL parameter and click the add button or press Enter.
+6. Click on the link in the popup or use keyboard shortcuts (CTRL/CMD + SHIFT + L + NUM [1-9]).

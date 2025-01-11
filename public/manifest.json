@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "The Duplicator",
+  "description": "Enhance productivity, a robust tool for duplicating tabs along with extra URL parameters, simplifying your workflow.",
+  "version": "5.0.0",
+  "author": {
+    "name": "Alexander Lunev",
+    "email": "lunevdev@gmail.com"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "logo.png",
+    "default_title": "The Duplicator"
+  },
+  "icons": {
+    "16": "logo.png",
+    "32": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
+  },
+  "background": {
+    "service_worker": "service-worker.js",
+    "type": "module"
+  },
+  "permissions": ["storage", "activeTab"],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "windows": "Ctrl+Shift+L",
+        "mac": "Command+Shift+L",
+        "chromeos": "Ctrl+Shift+L",
+        "linux": "Ctrl+Shift+L"
+      }
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
+}

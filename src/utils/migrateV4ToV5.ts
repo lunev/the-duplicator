@@ -61,11 +61,15 @@ export const cleanUpOldKeys = async () => {
 };
 
 export const migrate = async (dispatch: AppDispatch) => {
-  const result = await chrome.storage.sync.get(STORAGE_KEYS.MIGRATION_TO_V5);
+  try {
+    const result = await chrome.storage.sync.get(STORAGE_KEYS.MIGRATION_TO_V5);
 
-  if (result[STORAGE_KEYS.MIGRATION_TO_V5]) {
-    await migrateParams(dispatch);
-    await migratePreferences(dispatch);
-    await cleanUpOldKeys();
+    if (result[STORAGE_KEYS.MIGRATION_TO_V5]) {
+      await migrateParams(dispatch);
+      await migratePreferences(dispatch);
+      await cleanUpOldKeys();
+    }
+  } catch (error) {
+    console.error('Migration failed:', error);
   }
 };

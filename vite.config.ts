@@ -32,7 +32,7 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['./test/setup.ts', './test/chromeMock.ts'],
+    setupFiles: ['./test/setup.ts', './test/mock-extension-apis.ts'],
     coverage: {
       include: ['src/**/*.{ts,tsx}'],
       exclude: [

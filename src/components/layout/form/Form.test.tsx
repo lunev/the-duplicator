@@ -9,10 +9,6 @@ beforeEach(() => {
   }));
 });
 
-afterEach(() => {
-  vi.clearAllMocks();
-});
-
 describe('Form Rendering', () => {
   it('renders the form with input and button elements', () => {
     render(<Form />);

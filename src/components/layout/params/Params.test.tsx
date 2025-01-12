@@ -9,10 +9,6 @@ beforeEach(() => {
   }));
 });
 
-afterEach(() => {
-  vi.clearAllMocks();
-});
-
 describe('ParamsList Component', () => {
   describe('Rendering', () => {
     it('should display a message if no params are present', () => {

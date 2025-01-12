@@ -4,10 +4,6 @@ import { APP_NAME } from '@/constants';
 import * as router from 'react-router-dom';
 import type { Location } from 'react-router-dom';
 
-afterEach(() => {
-  vi.clearAllMocks();
-});
-
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual<typeof router>('react-router-dom');
   return {

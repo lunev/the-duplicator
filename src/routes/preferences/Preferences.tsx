@@ -28,23 +28,23 @@ const Preferences: React.FC = () => {
         <h3 className="font-bold mb-2">Manage URL Parameters</h3>
         <div className="mb-2 flex gap-2">
           <button
-            aria-label="Import"
-            onClick={() => chrome.runtime.openOptionsPage()}
+            aria-label="Import | options page"
             className="btn-outlined"
+            onClick={() => chrome.runtime.openOptionsPage()}
           >
             Import
           </button>
           <button
-            aria-label="Export"
-            onClick={() => chrome.runtime.openOptionsPage()}
+            aria-label="Export | options page"
             className="btn-outlined"
+            onClick={() => chrome.runtime.openOptionsPage()}
           >
             Export
           </button>
           <button
-            aria-label="Clear All"
-            onClick={() => chrome.runtime.openOptionsPage()}
+            aria-label="Clear All | options page"
             className="btn-warning"
+            onClick={() => chrome.runtime.openOptionsPage()}
           >
             Clear All
           </button>
@@ -52,8 +52,8 @@ const Preferences: React.FC = () => {
         <div className="mb-2">
           <button
             aria-label="Options page"
-            onClick={() => chrome.runtime.openOptionsPage()}
             className="text-sky-500"
+            onClick={() => chrome.runtime.openOptionsPage()}
           >
             <span className="underline">Go to Params Page</span> ↗
           </button>

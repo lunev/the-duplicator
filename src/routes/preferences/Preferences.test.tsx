@@ -80,13 +80,18 @@ describe('Preferences Component', () => {
   });
 
   it('opens options page when link is clicked', async () => {
-    const link = screen.queryByRole('button', { name: /options page/i });
-    expect(link).toBeInTheDocument();
+    const optionsPageLinks = screen.queryAllByRole('button', {
+      name: /options page/i,
+    });
 
-    if (link) fireEvent.click(link);
+    const openOptionsPageSpy = vi.spyOn(chrome.runtime, 'openOptionsPage');
+
+    optionsPageLinks.forEach((link) => {
+      fireEvent.click(link);
+    });
 
     await waitFor(() => {
-      expect(chrome.runtime.openOptionsPage).toHaveBeenCalled();
+      expect(openOptionsPageSpy).toHaveBeenCalled();
     });
   });
 });

@@ -13,11 +13,15 @@ const UpdateInfo: React.FC = () => {
 
   useEffect(() => {
     const checkUpdates = async () => {
-      const result = await chrome.storage.sync.get(
-        STORAGE_KEYS.UPDATES_AVAILABLE,
-      );
-      if (result[STORAGE_KEYS.UPDATES_AVAILABLE]) {
-        setUpdatesAvailable(true);
+      try {
+        const result = await chrome.storage.sync.get(
+          STORAGE_KEYS.UPDATES_AVAILABLE,
+        );
+        if (result[STORAGE_KEYS.UPDATES_AVAILABLE]) {
+          setUpdatesAvailable(true);
+        }
+      } catch (error) {
+        console.log('Error checking for updates:', error);
       }
     };
     checkUpdates();

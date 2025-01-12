@@ -6,22 +6,14 @@ import {
   updateTab,
 } from './utils.ts';
 
-const mockTabParams = [{ url: 'https://www.google.com/', index: 1 }];
-
-global.chrome = {
-  tabs: {
-    query: vi.fn().mockResolvedValue(mockTabParams),
-    create: vi
-      .fn()
-      .mockImplementation((props) => Promise.resolve({ ...props })),
-    update: vi
-      .fn()
-      .mockImplementation((props) => Promise.resolve({ ...props })),
-  },
-} as unknown as typeof chrome;
-
 describe('getCurrentTabParams', () => {
   it('return tabs info', async () => {
+    vi.spyOn(chrome.tabs, 'query').mockResolvedValue([
+      {
+        url: 'https://www.google.com/',
+        index: 1,
+      } as unknown as chrome.tabs.Tab,
+    ]);
     const currentTabParam = await getCurrentTabParams();
     expect(currentTabParam).toEqual({
       url: 'https://www.google.com/',

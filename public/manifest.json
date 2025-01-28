@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "The Duplicator",
   "description": "Enhance productivity, a robust tool for duplicating tabs along with extra URL parameters, simplifying your workflow.",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "author": {
     "name": "Alexander Lunev",
     "email": "lunevdev@gmail.com"

@@ -4,13 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "tsc -b && vite build",
-    "buildUpdate": "tsc && vite build --outDir=../update-folder",
-    "build:watch": "vite build --watch",
-    "lint": "eslint .",
+    "dev": "NODE_ENV=development vite build --mode development --watch",
+    "build": "tsc -b && NODE_ENV=production vite build",
     "test": "vitest",
-    "test:watch": "vitest --watch",
-    "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "zip": "node build-zip.js"
   },
@@ -19,7 +15,6 @@
     "@testing-library/jest-dom": "^6.6.2",
     "@testing-library/react": "^16.0.1",
     "@vitest/browser": "^2.1.4",
-    "playwright": "^1.48.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.54.2",
@@ -28,8 +23,7 @@
     "redux-persist": "^6.0.0",
     "redux-persist-webextension-storage": "^1.0.2",
     "uuid": "^10.0.0",
-    "vite-plugin-static-copy": "^1.0.6",
-    "vitest-browser-react": "^0.0.3"
+    "vite-plugin-static-copy": "^1.0.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
@@ -58,7 +52,7 @@
     "tailwindcss": "^3.4.14",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.12.2",
-    "vite": "^5.4.1",
+    "vite": "^5.4.12",
     "vitest": "^2.1.4"
   }
 }

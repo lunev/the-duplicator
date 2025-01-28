@@ -1,18 +1,10 @@
 {
   "updateMessage": {
-    "title": "What’s New in v5",
+    "title": "What’s New in v5.0.1",
     "features": [
       {
-        "title": "Export and Import Features:",
-        "description": "these have been moved to a separate page to fix issues on some macOS devices."
-      },
-      {
-        "title": "Mode Switcher:",
-        "description": "it is now located on the preferences page."
-      },
-      {
-        "title": "Performance:",
-        "description": "the extension is now more lightweight."
+        "title": "Security:",
+        "description": "minor security updates"
       }
     ]
   }

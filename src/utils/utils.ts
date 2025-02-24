@@ -1,4 +1,5 @@
 import { Param } from '@/types';
+import { storagePersisted } from './storagePersisted';
 
 export const getFullURL = (currentTabUrl: string = '', urlParam: string) => {
   try {
@@ -28,11 +29,16 @@ export const createTab = async (urlParam: string) => {
 };
 
 export const updateTab = async (urlParam: string) => {
+  const preferences = await storagePersisted.get('preferences');
   const currentTab = await getCurrentTabParams();
   if (currentTab) {
     const { url } = currentTab;
     const fullNewUrl = getFullURL(url, urlParam);
-    chrome.tabs.update({ url: fullNewUrl }, () => window.close());
+    chrome.tabs.update({ url: fullNewUrl }, () => {
+      if (!preferences.sidePanel) {
+        window.close();
+      }
+    });
   }
 };
 

@@ -4,6 +4,7 @@ import { Preferences } from '@/types/';
 const initialState: Preferences = {
   basicMode: false,
   newTab: true,
+  sidePanel: false,
 };
 
 type ToggleActionPayload = {

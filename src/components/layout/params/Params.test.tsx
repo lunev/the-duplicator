@@ -184,7 +184,7 @@ describe('ParamsList Component', () => {
     it('should handle open params correctly in new tabs', async () => {
       render(<Params />, {
         initialState: {
-          preferences: { basicMode: false, newTab: true },
+          preferences: { basicMode: false, newTab: true, sidePanel: false },
         },
       });
 
@@ -203,7 +203,7 @@ describe('ParamsList Component', () => {
     it('should handle open params correctly in current tabs', async () => {
       render(<Params />, {
         initialState: {
-          preferences: { basicMode: false, newTab: false },
+          preferences: { basicMode: false, newTab: false, sidePanel: false },
         },
       });
 
@@ -222,7 +222,7 @@ describe('ParamsList Component', () => {
     it('should open the correct tab when a valid key is pressed', () => {
       render(<Params />, {
         initialState: {
-          preferences: { basicMode: false, newTab: true },
+          preferences: { basicMode: false, newTab: true, sidePanel: false },
         },
       });
       fireEvent.keyDown(document, { key: '1' });
@@ -246,7 +246,7 @@ describe('ParamsList Component', () => {
     it('should display a warning for invalid keydown inputs', async () => {
       render(<Params />, {
         initialState: {
-          preferences: { basicMode: false, newTab: true },
+          preferences: { basicMode: false, newTab: true, sidePanel: false },
         },
       });
       fireEvent.keyDown(document, { key: '3' });
@@ -272,7 +272,7 @@ describe('ParamsList Component', () => {
     it('should not open tabs if clickable prop is false', async () => {
       render(<Params clickable={false} />, {
         initialState: {
-          preferences: { basicMode: false, newTab: true },
+          preferences: { basicMode: false, newTab: true, sidePanel: false },
         },
       });
 

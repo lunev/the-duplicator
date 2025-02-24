@@ -1,6 +1,7 @@
 export type Preferences = {
   basicMode: boolean;
   newTab: boolean;
+  sidePanel: boolean;
 };
 
 export type Param = {

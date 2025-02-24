@@ -7,6 +7,13 @@ const Preferences: React.FC = () => {
   const preferences = useAppSelector((state) => state.preferences);
   const dispatch = useAppDispatch();
 
+  const handleChangeSidePanelOptions = () => {
+    dispatch(togglePreference({ property: 'sidePanel' }));
+    chrome.sidePanel.setPanelBehavior({
+      openPanelOnActionClick: !preferences['sidePanel'],
+    });
+  };
+
   return (
     <div data-testid="preferences">
       <h1 className="sr-only">Preferences</h1>
@@ -23,6 +30,13 @@ const Preferences: React.FC = () => {
         checked={preferences.newTab}
         onChange={() => dispatch(togglePreference({ property: 'newTab' }))}
         hint="Enable to open links in new tabs."
+      />
+      <BaseSwitch
+        className="mb-4"
+        label="Use side panel"
+        checked={preferences.sidePanel}
+        onChange={handleChangeSidePanelOptions}
+        hint="Enable to open the extension in the side panel."
       />
       <div className="mb-5">
         <h3 className="font-bold mb-2">Manage URL Parameters</h3>

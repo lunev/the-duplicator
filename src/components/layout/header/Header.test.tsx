@@ -53,7 +53,7 @@ describe('Header Component', () => {
     render(<Header />, {
       route: '/',
       initialState: {
-        preferences: { basicMode: true, newTab: false },
+        preferences: { basicMode: true, newTab: false, sidePanel: false },
       },
     });
     expect(screen.getByText('Basic Mode')).toBeInTheDocument();

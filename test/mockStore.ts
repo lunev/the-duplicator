@@ -10,6 +10,7 @@ export type PreloadedState = {
   preferences?: {
     basicMode: boolean;
     newTab: boolean;
+    sidePanel: boolean;
   };
 };
 
@@ -30,6 +31,7 @@ export const createMockStore = (initialState: PreloadedState = {}) => {
       preferences: {
         basicMode: true,
         newTab: false,
+        sidePanel: false,
         ...initialState.preferences,
       },
     },

@@ -103,7 +103,7 @@ describe('Basic Mode Behavior', () => {
   it('calls createTab with the correct input when newTab is true', async () => {
     render(<Form basicMode />, {
       initialState: {
-        preferences: { basicMode: true, newTab: true },
+        preferences: { basicMode: true, newTab: true, sidePanel: false },
       },
     });
 
@@ -122,7 +122,7 @@ describe('Basic Mode Behavior', () => {
   it('calls updateTab with the correct input when newTab is false', async () => {
     render(<Form basicMode />, {
       initialState: {
-        preferences: { basicMode: true, newTab: false },
+        preferences: { basicMode: true, newTab: false, sidePanel: false },
       },
     });
 

@@ -15,6 +15,7 @@ describe('Dashboard component', () => {
         preferences: {
           basicMode: true,
           newTab: false,
+          sidePanel: false,
         },
       },
     });
@@ -27,6 +28,7 @@ describe('Dashboard component', () => {
         preferences: {
           basicMode: false,
           newTab: false,
+          sidePanel: false,
         },
       },
     });

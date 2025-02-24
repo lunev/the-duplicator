@@ -1,10 +1,10 @@
 {
   "updateMessage": {
-    "title": "What’s New in v5.0.1",
+    "title": "What's New in v6.0.0",
     "features": [
       {
-        "title": "Security:",
-        "description": "minor security updates"
+        "title": "UI/UX Improvements:",
+        "description": "Added a side panel option in the preferences."
       }
     ]
   }

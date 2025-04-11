@@ -19,10 +19,6 @@ body {
   @apply bg-white dark:bg-neutral-800 dark:text-slate-400;
 }
 
-main {
-  @apply p-4 bg-slate-100 dark:bg-neutral-800 dark:text-slate-400 text-sm;
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;

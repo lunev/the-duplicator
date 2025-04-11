@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "The Duplicator",
-  "description": "Enhance productivity, a robust tool for duplicating tabs along with extra URL parameters, simplifying your workflow.",
-  "version": "6.0.0",
+  "name": "The Duplicator: Duplicate Tabs with Custom URL Parameters",
+  "description": "Duplicate tabs with custom URL parameters, shortcuts, and export/import for a streamlined workflow.",
+  "version": "6.0.1",
   "author": {
     "name": "Alexander Lunev",
     "email": "lunevdev@gmail.com"

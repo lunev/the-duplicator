@@ -35,9 +35,10 @@ const UpdateInfo: React.FC = () => {
       <ul className="text-xs">
         {features.map((feature, index) => (
           <li className="mb-1" key={index}>
-            <strong className="font-bold">{feature.title}</strong>
-            {` `}
-            {feature.description}
+            {feature.title && (
+              <strong className="font-bold">{feature.title}</strong>
+            )}
+            {feature.description && <p>{feature.description}</p>}
           </li>
         ))}
       </ul>

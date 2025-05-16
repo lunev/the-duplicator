@@ -1,0 +1,3 @@
+.main {
+  @apply m-4 mt-0 animate-fade-in;
+}

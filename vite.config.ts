@@ -16,9 +16,7 @@ export default defineConfig({
       },
       output: {
         entryFileNames: ({ name }) => {
-          return name === 'service-worker'
-            ? 'service-worker.js'
-            : '[name][hash].js';
+          return name === 'service-worker' ? 'service-worker.js' : '[name][hash].js';
         },
       },
     },

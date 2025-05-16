@@ -1,0 +1,16 @@
+{
+  "updateMessage": {
+    "version": "7.0.0",
+    "title": "What's New",
+    "features": [
+      {
+        "title": "Groups",
+        "description": "Easily manage your parameters with the new grouping feature."
+      },
+      {
+        "title": "Preferences",
+        "description": "Access your preferences quickly from the header."
+      }
+    ]
+  }
+}

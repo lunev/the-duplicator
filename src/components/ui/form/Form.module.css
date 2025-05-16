@@ -1,0 +1,15 @@
+.label {
+  @apply pb-1 block text-xxs uppercase opacity-50;
+}
+
+.input {
+  @apply text-xs flex-1;
+}
+
+.formGroup {
+  @apply flex gap-2;
+}
+
+.button {
+  @apply text-xs uppercase;
+}

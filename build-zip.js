@@ -30,9 +30,7 @@ try {
     version = manifest.version;
   }
 } catch (err) {
-  console.warn(
-    `Warning: Could not read manifest.json. Using defaults "${extensionName}" v"${version}".`,
-  );
+  console.warn(`Warning: Could not read manifest.json. Using defaults "${extensionName}" v"${version}".`);
 }
 
 // Generate the output filename
@@ -46,9 +44,7 @@ const archive = archiver('zip', { zlib: { level: 9 } });
 
 // Event listeners
 output.on('close', () => {
-  console.log(
-    `ZIP file created: ${outputFileName} (${archive.pointer()} bytes)`,
-  );
+  console.log(`ZIP file created: ${outputFileName} (${archive.pointer()} bytes)`);
 });
 archive.on('error', (err) => {
   throw err;

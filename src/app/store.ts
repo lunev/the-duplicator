@@ -1,21 +1,23 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import preferencesSlice from '@/features/preferences/preferences-slice';
+import preferencesSlice, { preferencesTransform } from '@/features/preferences/preferences-slice';
 import paramsSlice from '@/features/params/params-slice';
-// prettier-ignore
+import groupsSlice from '@/features/groups/groups-slice';
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import { syncStorage } from 'redux-persist-webextension-storage';
 
 const syncStorageConfig = {
   key: 'syncStorage',
   storage: syncStorage,
+  transforms: [preferencesTransform],
 };
 
 const rootReducer = combineReducers({
   preferences: preferencesSlice,
   params: paramsSlice,
+  groups: groupsSlice,
 });
 
-const persistedReducer = persistReducer(syncStorageConfig, rootReducer);
+const persistedReducer = persistReducer<ReturnType<typeof rootReducer>>(syncStorageConfig, rootReducer);
 
 const store = configureStore({
   reducer: persistedReducer,

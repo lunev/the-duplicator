@@ -1,5 +1,7 @@
 import { Param } from '@/types';
 import { storagePersisted } from './storagePersisted';
+import { toast } from '@/hooks/use-toast';
+import { cn } from '@/lib/utils';
 
 export const getFullURL = (currentTabUrl: string = '', urlParam: string) => {
   try {
@@ -42,10 +44,7 @@ export const updateTab = async (urlParam: string) => {
   }
 };
 
-export const mergeParams = (
-  oldParams: Param[],
-  importedParams: Param[],
-): Param[] => {
+export const mergeParams = (oldParams: Param[], importedParams: Param[]): Param[] => {
   const uniqueItems = new Map<string, Param>();
 
   oldParams.forEach((item) => {
@@ -57,4 +56,30 @@ export const mergeParams = (
   });
 
   return Array.from(uniqueItems.values());
+};
+
+export const showToast = (description: React.ReactNode) => {
+  toast({
+    description,
+    className: cn('fixed top-2 right-2 flex max-w-[300px]'),
+    duration: 3000,
+  });
+};
+
+export const handleExport = (params: Param[]) => {
+  const now = new Date();
+  const timestamp = now.toISOString().replace(/[:.]/g, '-');
+
+  const json = JSON.stringify(params, null, 2); // optional: pretty print
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+
+  const filename = `the_duplicator_parameters_${timestamp}.json`;
+
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  link.click();
+
+  URL.revokeObjectURL(url);
 };

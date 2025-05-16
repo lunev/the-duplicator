@@ -2,24 +2,24 @@
   "manifest_version": 3,
   "name": "The Duplicator: Duplicate Tabs with Custom URL Parameters",
   "description": "Duplicate tabs with custom URL parameters, shortcuts, and export/import for a streamlined workflow.",
-  "version": "6.0.1",
+  "version": "7.0.0",
   "author": {
     "name": "Alexander Lunev",
     "email": "lunevdev@gmail.com"
   },
   "action": {
     "default_popup": "index.html",
-    "default_icon": "logo.png",
+    "default_icon": "icons/logo128x128.png",
     "default_title": "The Duplicator"
   },
   "side_panel": {
     "default_path": "index.html"
   },
   "icons": {
-    "16": "logo.png",
-    "32": "logo.png",
-    "48": "logo.png",
-    "128": "logo.png"
+    "16": "icons/logo16x16.png",
+    "32": "icons/logo32x32.png",
+    "48": "icons/logo48x48.png",
+    "128": "icons/logo128x128.png"
   },
   "background": {
     "service_worker": "service-worker.js",
@@ -37,7 +37,6 @@
     }
   },
   "options_ui": {
-    "page": "options.html",
-    "open_in_tab": true
+    "page": "options.html"
   }
 }

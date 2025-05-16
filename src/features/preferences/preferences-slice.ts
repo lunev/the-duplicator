@@ -1,11 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createTransform } from 'redux-persist';
 import { Preferences } from '@/types/';
-
-const initialState: Preferences = {
-  basicMode: false,
-  newTab: true,
-  sidePanel: false,
-};
 
 type ToggleActionPayload = {
   property: keyof Preferences;
@@ -15,6 +10,22 @@ type ValueActionPayload = {
   property: keyof Preferences;
   value: boolean;
 };
+
+const initialState: Preferences = {
+  basicMode: false,
+  newTab: true,
+  sidePanel: false,
+  showGroups: true,
+  showForm: true,
+};
+
+export const preferencesTransform = createTransform<Preferences, Preferences>(
+  (inboundState) => ({
+    ...initialState,
+    ...inboundState,
+  }),
+  (outboundState) => outboundState,
+);
 
 const preferencesSlice = createSlice({
   name: 'preferences',

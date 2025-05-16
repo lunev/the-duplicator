@@ -20,9 +20,7 @@ const paramsSlice = createSlice({
       state.data = state.data.filter((param) => param.id !== action.payload.id);
     },
     updateParam(state, action: PayloadAction<Param>) {
-      const index = state.data.findIndex(
-        (param) => param.id === action.payload.id,
-      );
+      const index = state.data.findIndex((param) => param.id === action.payload.id);
       if (index !== -1) {
         state.data[index] = action.payload;
       }
@@ -33,6 +31,5 @@ const paramsSlice = createSlice({
   },
 });
 
-export const { addParam, removeParam, updateParam, updateAllParams } =
-  paramsSlice.actions;
+export const { addParam, removeParam, updateParam, updateAllParams } = paramsSlice.actions;
 export default paramsSlice.reducer;

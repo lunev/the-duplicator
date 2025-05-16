@@ -1,0 +1,7 @@
+.preferences {
+  @apply flex gap-1;
+}
+
+.toggle {
+  @apply [&_svg]:w-[12px] [&_svg]:h-[12px];
+}

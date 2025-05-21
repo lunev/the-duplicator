@@ -37,6 +37,9 @@ export default defineConfig({
         'src/types/*',
         'src/features/*',
         'src/components/ui/icons/*',
+        'src/components/ui', // shadcn components
+        'src/components/theme-provider.tsx', // shadcn theme provider
+        'src/hooks/use-toast.ts', // shadcn toast hook
         'src/constants/*',
         'src/main.tsx',
         'src/App.tsx',

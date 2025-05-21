@@ -1,35 +1,65 @@
-import { createMockStore } from './mockStore';
-import { render, RenderOptions } from '@testing-library/react';
 import { ReactElement } from 'react';
+import { render, RenderOptions } from '@testing-library/react';
+import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import { MemoryRouter, MemoryRouterProps } from 'react-router-dom';
-import { PreloadedState } from './mockStore';
+import { MemoryRouter } from 'react-router-dom';
+import paramsSlice from '../src/features/params/params-slice';
+import preferencesSlice from '../src/features/preferences/preferences-slice';
+import { Param, Preferences } from '@/types';
 
-interface CustomRenderOptions extends Omit<RenderOptions, 'queries'> {
-  route?: string;
-  routerProps?: Omit<MemoryRouterProps, 'children'>;
-  initialState?: PreloadedState;
+export const initialState = {
+  params: {
+    data: [
+      { id: '1', title: '/admin/' },
+      { id: '2', title: '/wp-admin/' },
+    ] as Param[],
+  },
+  preferences: {
+    basicMode: false,
+    newTab: false,
+    sidePanel: false,
+    showGroups: false,
+    showForm: true,
+  } as Preferences,
+};
+
+const createMockStore = (preloadedState = {}) =>
+  configureStore({
+    reducer: {
+      params: paramsSlice,
+      preferences: preferencesSlice,
+    },
+    preloadedState,
+  });
+
+interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
+  preloadedState?: Record<string, unknown>;
+  store?: ReturnType<typeof createMockStore>;
 }
 
-const customRender = (
+export function renderWithProviders(
   ui: ReactElement,
   {
-    route = '/',
-    routerProps = {},
-    initialState = {},
-    ...options
-  }: CustomRenderOptions = {},
-) => {
-  const store = createMockStore(initialState);
-  return render(
+    preloadedState = initialState,
+    store = createMockStore(preloadedState),
+    ...renderOptions
+  }: ExtendedRenderOptions = {},
+) {
+  const Wrapper = ({ children }: { children: React.ReactNode }) => (
     <Provider store={store}>
-      <MemoryRouter initialEntries={[route]} {...routerProps}>
-        {ui}
+      <MemoryRouter
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true,
+        }}
+      >
+        {children}
       </MemoryRouter>
-    </Provider>,
-    options,
+    </Provider>
   );
-};
-// ignore-next-line
-export * from '@testing-library/react';
-export { customRender as render };
+
+  return {
+    store,
+    ...render(ui, { wrapper: Wrapper, ...renderOptions }),
+  };
+}

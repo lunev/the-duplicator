@@ -1,13 +1,12 @@
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { togglePreference } from '@/features/preferences/preferences-slice';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { Toggle } from '@/components/ui/toggle';
 import { showToast } from '@/utils/utils';
 import { ArchiveIcon } from 'lucide-react';
 import { DrawingPinFilledIcon, DrawingPinIcon, ExternalLinkIcon, FileIcon, FontBoldIcon } from '@radix-ui/react-icons';
 import styles from './TogglePreferences.module.css';
+import TogglePreferencesItem from './TogglePreferencesItem';
 
-interface Setting {
+interface PreferencesType {
   id: string;
   label: string;
   icon: React.ReactNode;
@@ -22,7 +21,7 @@ const TogglePreferences: React.FC = () => {
   const { data: params } = useAppSelector((state) => state.params);
   const dispatch = useAppDispatch();
 
-  const settings: Setting[] = [
+  const settings: PreferencesType[] = [
     {
       id: '1',
       label: 'Form',
@@ -95,26 +94,17 @@ const TogglePreferences: React.FC = () => {
   ];
 
   return (
-    <div className={styles.preferences}>
+    <div className={styles.preferencesContainer}>
       {settings?.map((s) => (
-        <TooltipProvider key={s.id}>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Toggle
-                aria-label={s.label}
-                data-state={s.enabled}
-                value={s.label}
-                onClick={s.toggle}
-                disabled={s.disabled}
-                className={styles.toggle}
-                size="icon"
-              >
-                {s.icon}
-              </Toggle>
-            </TooltipTrigger>
-            <TooltipContent>{s.tooltip}</TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+        <TogglePreferencesItem
+          key={s.id}
+          label={s.label}
+          icon={s.icon}
+          tooltip={s.tooltip}
+          enabled={s.enabled}
+          disabled={s.disabled}
+          toggle={s.toggle}
+        />
       ))}
     </div>
   );

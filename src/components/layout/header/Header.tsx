@@ -23,7 +23,7 @@ const Header: React.FC = () => {
       </div>
       <TogglePreferences />
       <DM.DropdownMenu>
-        <DM.DropdownMenuTrigger>
+        <DM.DropdownMenuTrigger data-testid="dropdown-trigger">
           <DotsVerticalIcon />
         </DM.DropdownMenuTrigger>
         <DM.DropdownMenuContent className={styles.dropdown}>

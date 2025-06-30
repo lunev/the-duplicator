@@ -24,13 +24,18 @@ const Form: React.FC<FormType> = ({
   onSubmit,
 }) => {
   const [inputValue, setInputValue] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!inputValue.trim()) return;
+    if (!inputValue.trim()) {
+      setError('Please enter a URL parameter');
+      return;
+    }
 
     onSubmit(inputValue);
     setInputValue('');
+    setError('');
 
     if (toastMessage) {
       showToast(toastMessage(inputValue));
@@ -46,7 +51,6 @@ const Form: React.FC<FormType> = ({
           className={styles.input}
           placeholder={placeholder}
           value={inputValue}
-          required
           autoFocus={autofocus}
           onChange={(e) => setInputValue(e.target.value)}
         />
@@ -54,6 +58,7 @@ const Form: React.FC<FormType> = ({
           {button}
         </Button>
       </div>
+      {error && <div className={styles.error}>{error}</div>}
     </form>
   );
 };

@@ -13,3 +13,7 @@
 .button {
   @apply text-xs uppercase;
 }
+
+.error {
+  @apply mt-1 text-red-500
+}

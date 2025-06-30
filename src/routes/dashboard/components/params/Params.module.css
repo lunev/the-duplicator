@@ -26,6 +26,10 @@
   @apply text-xs;
 }
 
+.paramEditedFieldInvalid {
+  @apply text-xs border-red-500;
+}
+
 .paramLink {
   @apply h-auto p-0 text-xs max-w-[360px] text-ellipsis text-nowrap block overflow-hidden border-b border-black dark:border-white hover:border-transparent hover:dark:border-transparent rounded-none;
 }

@@ -38,6 +38,7 @@ const ParamsList: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const handleSave = () => {
+    if (!editedParam?.title.trim()) return;
     if (editedParam) {
       const updatedParam: Param = { ...editedParam, title: editedParam.title };
       dispatch(updateParam(updatedParam));
@@ -117,7 +118,7 @@ const ParamsList: React.FC = () => {
                   {editedParam?.id === param.id ? (
                     <Input
                       type="text"
-                      className={styles.paramEditedField}
+                      className={`${!editedParam?.title.trim() ? styles.paramEditedFieldInvalid : styles.paramEditedField}`}
                       value={editedParam.title}
                       onChange={(e) => setEditedParam({ ...editedParam, title: e.target.value })}
                       onKeyDown={(e) => e.key === 'Enter' && handleSave()}

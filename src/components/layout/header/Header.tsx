@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '@/app/hooks';
 import { APP_NAME } from '@/constants';
-import { DotsVerticalIcon, DownloadIcon, UploadIcon } from '@radix-ui/react-icons';
+import { DotsVerticalIcon, DownloadIcon, RocketIcon, UploadIcon } from '@radix-ui/react-icons';
 import { handleExport } from '@/utils/utils';
 import * as DM from '@/components/ui/dropdown-menu';
 import TogglePreferences from './components/TogglePreferences';
@@ -35,6 +35,9 @@ const Header: React.FC = () => {
               <UploadIcon /> Export Parameters
             </DM.DropdownMenuItem>
           )}
+          <DM.DropdownMenuItem onClick={() => chrome.tabs.create({ url: 'https://www.patreon.com/c/lunevdev' })}>
+            <RocketIcon /> Support the extension
+          </DM.DropdownMenuItem>
         </DM.DropdownMenuContent>
       </DM.DropdownMenu>
     </header>

@@ -23,18 +23,30 @@ let version = '1.0.0'; // Default version
 
 try {
   const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+
   if (manifest.name) {
-    extensionName = manifest.name.replace(/\s+/g, '-').toLowerCase(); // Normalize name
+    // Sanitize name: remove spaces, special chars, accents, colons, etc.
+    extensionName = manifest.name
+      .normalize('NFKD')                // Normalize Unicode
+      .replace(/[\u0300-\u036f]/g, '')  // Remove accents
+      .replace(/[^a-zA-Z0-9_-]+/g, '-') // Replace unsafe characters with '-'
+      .replace(/^-+|-+$/g, '')          // Trim leading/trailing dashes
+      .toLowerCase();
   }
+
   if (manifest.version) {
     version = manifest.version;
   }
 } catch (err) {
-  console.warn(`Warning: Could not read manifest.json. Using defaults "${extensionName}" v"${version}".`);
+  console.warn(
+    `Warning: Could not read manifest.json. Using defaults "${extensionName}" v"${version}".`
+  );
 }
+
 
 // Generate the output filename
 const outputFileName = `chrome-extension/${extensionName}-v${version}.zip`;
+console.log(outputFileName)
 
 console.log(`Creating ZIP: ${outputFileName}`);
 

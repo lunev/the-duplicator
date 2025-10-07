@@ -1,7 +1,7 @@
 {
-  "name": "daily-reminder",
+  "name": "the-duplicator",
   "private": true,
-  "version": "0.0.0",
+  "version": "7.0.3",
   "type": "module",
   "scripts": {
     "dev": "NODE_ENV=development vite build --mode development --watch",

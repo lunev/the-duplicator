@@ -1,10 +1,10 @@
 {
   "updateMessage": {
-    "version": "7.0.3",
+    "version": "7.0.4",
     "title": "What's New",
     "features": [
       {
-        "title": "Security Updates",
+        "title": "Minor UI Updates",
         "description": "Improved internal security to keep your data safe and the extension more reliable."
       }
     ]

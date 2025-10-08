@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "The Duplicator: Duplicate Tabs with Custom URL Parameters",
+  "name": "The Duplicator",
   "description": "Duplicate tabs with custom URL parameters, shortcuts, and export/import for a streamlined workflow.",
-  "version": "7.0.3",
+  "version": "7.0.4",
   "author": {
     "name": "Alexander Lunev",
     "email": "lunevdev@gmail.com"

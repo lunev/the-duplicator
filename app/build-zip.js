@@ -45,7 +45,11 @@ try {
 
 
 // Generate the output filename
-const outputFileName = `chrome-extension/${extensionName}-v${version}.zip`;
+const releasesDir = path.join(__dirname, '..', 'chrome-webstore', 'releases');
+if (!fs.existsSync(releasesDir)) {
+  fs.mkdirSync(releasesDir, { recursive: true });
+}
+const outputFileName = path.join(releasesDir, `${extensionName}-v${version}.zip`);
 console.log(outputFileName)
 
 console.log(`Creating ZIP: ${outputFileName}`);

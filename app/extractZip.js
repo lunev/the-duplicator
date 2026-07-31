@@ -29,4 +29,4 @@ extractZip(zipFilePath, { dir: outputFolder }, (err) => {
   }
 });
 
-// npm run build-prev -- ./chrome-extension/chrome-extension-v5.0.1.zip
+// npm run build-prev -- ../chrome-webstore/releases/the-duplicator-v7.0.4.zip

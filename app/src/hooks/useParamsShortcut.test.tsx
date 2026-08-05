@@ -1,6 +1,7 @@
 import { renderHook } from '@testing-library/react';
 import useParamsShortcut from './useParamsShortcut';
 import { act } from 'react-dom/test-utils';
+import type { Mock } from 'vitest';
 
 describe('useParamsShortcut', () => {
   const params = [
@@ -8,12 +9,12 @@ describe('useParamsShortcut', () => {
     { id: '2', title: 'Tab 2' },
   ];
 
-  let handleOpenTab: ReturnType<typeof vi.fn>;
-  let setKeydownWarning: ReturnType<typeof vi.fn>;
+  let handleOpenTab: Mock<(title: string) => void>;
+  let setKeydownWarning: Mock<(value: boolean) => void>;
 
   beforeEach(() => {
-    handleOpenTab = vi.fn();
-    setKeydownWarning = vi.fn();
+    handleOpenTab = vi.fn<(title: string) => void>();
+    setKeydownWarning = vi.fn<(value: boolean) => void>();
   });
 
   const fireKeyDown = (key: string, target?: HTMLElement) => {

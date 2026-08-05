@@ -1,5 +1,5 @@
 import fs from 'fs';
-import archiver from 'archiver';
+import { ZipArchive } from 'archiver';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -56,7 +56,7 @@ console.log(`Creating ZIP: ${outputFileName}`);
 
 // Create ZIP file stream
 const output = fs.createWriteStream(outputFileName);
-const archive = archiver('zip', { zlib: { level: 9 } });
+const archive = new ZipArchive({ zlib: { level: 9 } });
 
 // Event listeners
 output.on('close', () => {

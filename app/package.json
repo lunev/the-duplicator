@@ -1,7 +1,7 @@
 {
   "name": "the-duplicator",
   "private": true,
-  "version": "7.0.3",
+  "version": "7.0.7",
   "type": "module",
   "scripts": {
     "dev": "NODE_ENV=development vite build --mode development --watch",
@@ -59,8 +59,7 @@
     "eslint": "^10.8.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.4.9",
     "extract-zip": "^2.0.1",
     "globals": "^15.11.0",

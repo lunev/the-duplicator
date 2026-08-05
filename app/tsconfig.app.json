@@ -21,11 +21,5 @@
     "paths": { "@/*": ["src/*"], "@test-utils": ["test/test-utils.tsx"] },
     "types": ["vitest/globals", "@testing-library/jest-dom", "chrome"]
   },
-  "include": ["src"],
-  /* Excluded pending F16 (missing @testing-library/user-event devDependency); remove once F16 lands */
-  "exclude": [
-    "src/components/layout/header/components/TogglePreferences.test.tsx",
-    "src/components/layout/header/components/TogglePreferencesItem.test.tsx",
-    "src/components/layout/header/Header.test.tsx"
-  ]
+  "include": ["src"]
 }

@@ -1,7 +1,7 @@
 {
   "name": "the-duplicator",
   "private": true,
-  "version": "7.0.7",
+  "version": "7.0.8",
   "type": "module",
   "scripts": {
     "dev": "NODE_ENV=development vite build --mode development --watch",
@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
+    "@testing-library/user-event": "^14.6.3",
     "@types/chrome": "^0.0.277",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.7.6",

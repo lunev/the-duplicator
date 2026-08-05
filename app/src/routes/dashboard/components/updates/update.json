@@ -1,11 +1,11 @@
 {
   "updateMessage": {
-    "version": "7.0.4",
+    "version": "7.0.8",
     "title": "What's New",
     "features": [
       {
-        "title": "Minor UI Updates",
-        "description": "Improved internal security to keep your data safe and the extension more reliable."
+        "title": "Reduced permissions",
+        "description": "The extension no longer requests access to all your open tabs — it only ever reads the tab you're actively viewing, which means a smaller, more trustworthy permission request when installing or updating."
       }
     ]
   }

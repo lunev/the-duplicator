@@ -88,7 +88,9 @@ Each entry below is tracked as a task in `docs/ux/roadmap.md`. IDs (`F#` = findi
 
 **Suggested Solution:** Drop `"tabs"`, keep `"activeTab"`. Verify `chrome.tabs.query({active:true,currentWindow:true})` still resolves `url` from within the popup context (it will — `activeTab` grants URL access to the tab active when the extension UI was invoked). Update `CHROMEWEBSTORE.md`/store justification for the permission change.
 
-**Status**: Open
+**Status**: Completed (2026-08-05)
+
+**Implementation note:** Removed `"tabs"` from `app/public/manifest.json`'s `permissions` array, leaving `["storage", "activeTab", "sidePanel"]`. Verified every `chrome.tabs.*` call site in the codebase (`app/src/utils/utils.ts`: `chrome.tabs.query({active:true, currentWindow:true})`, `chrome.tabs.create`, `chrome.tabs.update`) is only ever invoked from user-click handlers in the popup/side panel (`Dashboard.tsx`, `Params.tsx`), never from the service worker or against non-active tabs — exactly the scope `activeTab` covers. `CHROMEWEBSTORE.md` did not exist in the repo; created it at the repo root with permission justifications for `storage`/`activeTab`/`sidePanel` and a privacy-data-handling summary, so future permission changes have a file to keep in sync. Also installed the missing `@testing-library/user-event` devDependency (pre-existing gap tracked separately as F16) since `vitest run` was failing on unrelated pre-existing test files before this fix, and this run's release gate requires a green test suite.
 
 ---
 
@@ -448,7 +450,9 @@ Each entry below is tracked as a task in `docs/ux/roadmap.md`. IDs (`F#` = findi
 
 **Suggested Solution:** Add `@testing-library/user-event` to `app/package.json` devDependencies at a version compatible with the installed `@testing-library/react`, install it, and confirm all four test files run.
 
-**Status**: Open
+**Status**: Completed (2026-08-05)
+
+**Implementation note:** Fixed incidentally while implementing F7, whose release-gate step requires a green `vitest run` before shipping. Installed `@testing-library/user-event@^14.6.3` (compatible with the installed `@testing-library/react@^16.0.1` and `react@^18.3.1`) as a devDependency. All 4 test files now pass (16/16 tests). Also removed the `exclude` block from `app/tsconfig.app.json` that had been added to unblock `tsc -b` around these 3 files pending this fix — confirmed `npx tsc -b` still passes clean with the exclude removed.
 
 ---
 

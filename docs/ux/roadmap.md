@@ -10,14 +10,14 @@ Tracks tasks from `docs/ux/ux-audit.md`. IDs (`F#` = finding, `NF#` = new featur
 
 - [ ] **F1: Remove placeholder seed data from groups** — Effort: Trivial — Status: Open
 - [x] **F2: Sync `package.json` version with `manifest.json`** — Effort: Trivial — Status: Completed (2026-08-05)
-- [ ] **F7: Narrow `"tabs"` permission to `"activeTab"`** — Effort: Small — Status: Open
+- [x] **F7: Narrow `"tabs"` permission to `"activeTab"`** — Effort: Small — Status: Completed (2026-08-05)
 - [ ] **F6: Add confirmation/undo for destructive actions** — Effort: Small — Status: Open
 
 ## Backlog
 
 - [x] **F14: Fix `build-zip.js` against installed `archiver` version** — Effort: Small — Status: Completed (2026-08-05)
 - [x] **F15: Fix broken `tsc -b` and `eslint` on `main`** — Effort: Small — Status: Completed (2026-08-05)
-- [ ] **F16: Install missing `@testing-library/user-event` test dependency** — Effort: Trivial — Status: Open
+- [x] **F16: Install missing `@testing-library/user-event` test dependency** — Effort: Trivial — Status: Completed (2026-08-05)
 - [ ] **F4: Build a real options page** (identity, settings, group management) — Effort: Medium — Status: Open
 - [ ] **F5: Add a first-run onboarding explainer** — Effort: Small — Status: Open
 - [ ] **F3: Delete or finish the dead options-page buttons** — Effort: Small — Status: Open

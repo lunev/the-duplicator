@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "The Duplicator",
   "description": "Duplicate tabs with custom URL parameters, shortcuts, and export/import for a streamlined workflow.",
-  "version": "7.0.7",
+  "version": "7.0.8",
   "author": {
     "name": "Alexander Lunev",
     "email": "lunevdev@gmail.com"
@@ -25,7 +25,7 @@
     "service_worker": "service-worker.js",
     "type": "module"
   },
-  "permissions": ["storage", "activeTab", "sidePanel", "tabs"],
+  "permissions": ["storage", "activeTab", "sidePanel"],
   "commands": {
     "_execute_action": {
       "suggested_key": {

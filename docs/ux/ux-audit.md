@@ -14,7 +14,15 @@ Each entry below is tracked as a task in `docs/ux/roadmap.md`. IDs (`F#` = findi
 
 **Suggested Solution:** Set `initialGroups: Group[] = []`. If sample groups are wanted for onboarding, gate them behind a one-time "Try Groups" CTA on the empty state instead of silent seed data.
 
-**Status**: Open
+**Status**: Completed (2026-08-05)
+
+**Implementation note:** In `app/src/features/groups/groups-slice.ts`, changed `initialGroups` from an array of two seeded `Group` objects (`Group #1`/`Group #2`, each built with a random `nanoid()` id) to `const initialGroups: Group[] = []`, and removed the now-unused `nanoid` import from that file — no other line in that file needed to change. Verified via grep that no other file in the codebase (other slices, tests, migration logic) references the literal strings `Group #1`/`Group #2`, so nothing else depended on the seed data.
+
+Verified the redux-persist impact before shipping: `app/src/app/store.ts` wraps the whole `rootReducer` (including the `groups` slice) in a single `persistReducer` against `chrome.storage.sync` with no `whitelist`/`blacklist`, so `groups` is persisted in full. Redux-persist rehydrates by merging *persisted* state over the reducer's `initialState` only for keys actually present in storage — for any user who has already opened the extension once, their own `groups.data` (already containing whatever they did with/to the original seed groups, or their own added groups) was already written to `chrome.storage.sync` and will continue to load exactly as before. This change only changes behavior for genuinely fresh installs with no prior persisted `groups` key, which is exactly the audit's target case. No migration was needed.
+
+Confirmed `TabGroups.tsx` degrades cleanly on an empty `groups.data`: the `General` tab is rendered unconditionally, independent of the `groups` array, and `groups.map(...)` simply contributes zero extra tabs — so a fresh install now shows a single, intentional-looking `General` tab instead of `General | Group #1 | Group #2`. The "Move to group" submenu in `Params.tsx` likewise now starts with no group targets rather than two meaningless ones, matching the audit's stated goal. The optional "Try Groups" onboarding CTA was not implemented — out of scope per the audit's own framing of it as optional; the core fix (removing the seed data) is what shipped.
+
+No test was added: this change only edits static initial-state data in a Redux slice (no component logic, no interactive Radix/cmdk surface touched), so per the standing "interactive-component test" requirement it doesn't apply — existing coverage plus a manual fresh-profile check in Chrome was used to confirm the empty state renders correctly (see roadmap/manual test steps).
 
 ---
 

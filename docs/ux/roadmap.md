@@ -8,7 +8,7 @@ Tracks tasks from `docs/ux/ux-audit.md`. IDs (`F#` = finding, `NF#` = new featur
 
 ## Current Sprint
 
-- [ ] **F1: Remove placeholder seed data from groups** — Effort: Trivial — Status: Open
+- [x] **F1: Remove placeholder seed data from groups** — Effort: Trivial — Status: Completed (2026-08-05)
 - [x] **F2: Sync `package.json` version with `manifest.json`** — Effort: Trivial — Status: Completed (2026-08-05)
 - [x] **F7: Narrow `"tabs"` permission to `"activeTab"`** — Effort: Small — Status: Completed (2026-08-05)
 - [ ] **F6: Add confirmation/undo for destructive actions** — Effort: Small — Status: Open

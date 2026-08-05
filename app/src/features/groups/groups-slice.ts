@@ -1,25 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Group } from '@/types/';
-import { nanoid } from 'nanoid';
 
 type GroupsState = {
   data: Group[];
 };
 
-const initialGroups: Group[] = [
-  {
-    id: nanoid(),
-    name: 'Group #1',
-    items: [],
-    selected: false,
-  },
-  {
-    id: nanoid(),
-    name: 'Group #2',
-    items: [],
-    selected: false,
-  },
-];
+const initialGroups: Group[] = [];
 
 const initialState: GroupsState = {
   data: initialGroups,

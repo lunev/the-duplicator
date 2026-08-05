@@ -1,11 +1,11 @@
 {
   "updateMessage": {
-    "version": "7.0.8",
+    "version": "7.0.9",
     "title": "What's New",
     "features": [
       {
-        "title": "Reduced permissions",
-        "description": "The extension no longer requests access to all your open tabs — it only ever reads the tab you're actively viewing, which means a smaller, more trustworthy permission request when installing or updating."
+        "title": "Cleaner first launch",
+        "description": "New installs no longer start with two empty placeholder groups already in the list — the groups panel now starts truly empty until you create one yourself."
       }
     ]
   }

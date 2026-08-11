@@ -2,8 +2,7 @@ import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { togglePreference } from '@/features/preferences/preferences-slice';
 import { showToast } from '@/utils/utils';
 import { Switch } from '@/components/ui/switch';
-import { ArchiveIcon } from 'lucide-react';
-import { DrawingPinIcon, ExternalLinkIcon, FileIcon, FontBoldIcon } from '@radix-ui/react-icons';
+import { ArchiveIcon, DrawingPinIcon, ExternalLinkIcon, FileIcon, FontBoldIcon } from '@radix-ui/react-icons';
 
 interface PreferenceRow {
   id: string;

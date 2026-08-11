@@ -13,6 +13,7 @@ import * as DM from '@/components/ui/dropdown-menu';
 import WarningMessage from '@/components/ui/warning-message/WarningMessage';
 import KeyTooltip from '../keytooltip/KeyTooltip';
 import {
+  ArchiveIcon,
   CheckIcon,
   Cross2Icon,
   DotsVerticalIcon,
@@ -21,7 +22,6 @@ import {
   Pencil1Icon,
   TrashIcon,
 } from '@radix-ui/react-icons';
-import { ArchiveIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const ParamsList: React.FC = () => {

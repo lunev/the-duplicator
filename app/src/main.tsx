@@ -6,6 +6,10 @@ import { PersistGate } from 'redux-persist/integration/react';
 import App from '@/App.tsx';
 import '@/assets/index.css';
 
+if (new URLSearchParams(window.location.search).get('context') === 'sidepanel') {
+  document.documentElement.classList.add('side-panel');
+}
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>

@@ -10,8 +10,8 @@ const RootLayout: React.FC = () => {
       <Header />
       <Main>
         <Outlet />
-        <Toaster />
       </Main>
+      <Toaster />
     </ThemeProvider>
   );
 };

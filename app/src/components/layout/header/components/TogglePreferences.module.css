@@ -1,7 +1,0 @@
-.preferencesContainer {
-  @apply flex gap-1;
-}
-
-.toggleButton {
-  @apply [&_svg]:w-[12px] [&_svg]:h-[12px];
-}

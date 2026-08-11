@@ -2,18 +2,14 @@
   "manifest_version": 3,
   "name": "The Duplicator",
   "description": "Duplicate tabs with custom URL parameters, shortcuts, and export/import for a streamlined workflow.",
-  "version": "7.0.9",
-  "author": {
-    "name": "Alexander Lunev",
-    "email": "lunevdev@gmail.com"
-  },
+  "version": "7.1.0",
   "action": {
     "default_popup": "index.html",
     "default_icon": "icons/logo128x128.png",
     "default_title": "The Duplicator"
   },
   "side_panel": {
-    "default_path": "index.html"
+    "default_path": "index.html?context=sidepanel"
   },
   "icons": {
     "16": "icons/logo16x16.png",
@@ -35,8 +31,5 @@
         "linux": "Ctrl+Shift+L"
       }
     }
-  },
-  "options_ui": {
-    "page": "options.html"
   }
 }

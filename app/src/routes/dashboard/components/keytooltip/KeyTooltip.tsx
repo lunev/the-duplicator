@@ -1,5 +1,7 @@
 import * as TT from '@/components/ui/tooltip';
-import styles from './KeyTooltip.module.css';
+
+const KEY_CLASS =
+  'min-w-5 h-5 flex items-center justify-center px-1 text-xxs text-center border rounded drop-shadow-sm cursor-default';
 
 const KeyTooltip: React.FC<{ index: number }> = ({ index }) => {
   return (
@@ -7,14 +9,14 @@ const KeyTooltip: React.FC<{ index: number }> = ({ index }) => {
       {index < 9 ? (
         <TT.Tooltip>
           <TT.TooltipTrigger>
-            <div className={styles.key}>{index + 1}</div>
+            <div className={KEY_CLASS}>{index + 1}</div>
           </TT.TooltipTrigger>
           <TT.TooltipContent>
             <p>Shortcut key {index + 1}</p>
           </TT.TooltipContent>
         </TT.Tooltip>
       ) : (
-        <div className={styles.key}>{index + 1}</div>
+        <div className={KEY_CLASS}>{index + 1}</div>
       )}
     </>
   );

@@ -1,11 +1,15 @@
 {
   "updateMessage": {
-    "version": "7.0.9",
+    "version": "7.1.0",
     "title": "What's New",
     "features": [
       {
-        "title": "Cleaner first launch",
-        "description": "New installs no longer start with two empty placeholder groups already in the list — the groups panel now starts truly empty until you create one yourself."
+        "title": "New Settings page",
+        "description": "Form, Groups, Basic Mode, and other preferences now live on their own Settings page (via the ⋮ menu) instead of small icons in the header."
+      },
+      {
+        "title": "Refreshed look",
+        "description": "Cleaner header and card layout, plus better contrast in dark mode."
       }
     ]
   }

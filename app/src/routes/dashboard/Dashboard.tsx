@@ -8,7 +8,6 @@ import Form from '@/components/ui/form/Form';
 import UpdateInfo from './components/updates/UpdateInfo';
 import ParamsList from './components/params/Params';
 import TabGroups from './components/tabgroups/TabGroups';
-import styles from './Dashboard.module.css';
 
 const Dashboard: React.FC = () => {
   const { basicMode, showForm, showGroups } = useAppSelector((state) => state.preferences);
@@ -35,7 +34,7 @@ const Dashboard: React.FC = () => {
       <ParamsList />
       {(showForm === undefined || showForm) && ( // Show the form if 'showForm' is undefined (before redux-persist rehydrates state)
         <Form
-          className={styles.form}
+          className="mt-4"
           label="New URL Parameter"
           placeholder="Enter a URL parameter"
           button="Add"
@@ -46,11 +45,6 @@ const Dashboard: React.FC = () => {
               dispatch(addParamToGroup({ groupId: selectedGroup.id, paramId: newParam.id }));
             }
           }}
-          toastMessage={(urlParam) => (
-            <>
-              New param <strong>{urlParam}</strong> has been added
-            </>
-          )}
         />
       )}
     </div>

@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { updateAllParams } from '@/features/params/params-slice';
 import { Cross2Icon } from '@radix-ui/react-icons';
 
-const ImportedParams: React.FC = () => {
+const ImportParamsForm: React.FC = () => {
   const { data: params } = useAppSelector((state) => state.params);
   const [fileContent, setFileContent] = useState('');
   const [message, setMessage] = useState('');
@@ -77,4 +77,4 @@ const ImportedParams: React.FC = () => {
   );
 };
 
-export default ImportedParams;
+export default ImportParamsForm;

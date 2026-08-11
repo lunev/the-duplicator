@@ -22,7 +22,7 @@ import {
   TrashIcon,
 } from '@radix-ui/react-icons';
 import { ArchiveIcon } from 'lucide-react';
-import styles from './Params.module.css';
+import { cn } from '@/lib/utils';
 
 const ParamsList: React.FC = () => {
   const [editedParam, setEditedParam] = useState<Param | null>(null);
@@ -42,11 +42,6 @@ const ParamsList: React.FC = () => {
     if (editedParam) {
       const updatedParam: Param = { ...editedParam, title: editedParam.title };
       dispatch(updateParam(updatedParam));
-      showToast(
-        <>
-          The param <strong>{editedParam.title}</strong> has been saved
-        </>,
-      );
     }
     setEditedParam(null);
   };
@@ -67,11 +62,6 @@ const ParamsList: React.FC = () => {
   const handleRemove = (param: Param) => {
     dispatch(removeParam(param));
     dispatch(removeParamFromAllGroups({ paramId: param.id }));
-    showToast(
-      <>
-        The param <strong>{param.title}</strong> has been removed
-      </>,
-    );
   };
 
   const handleRemoveFromGroup = (param: Param, group: Group) => {
@@ -104,29 +94,30 @@ const ParamsList: React.FC = () => {
           onClose={() => setKeydownWarning(false)}
         />
       )}
-      <h2 className={styles.subheading}>
-        <span className={styles.subheadingLabel}>Url Parameters</span>
-        {selectedGroup && !showGroups && <span className={styles.subheadingGroup}>[{selectedGroup.name} group]</span>}
+      <h2 className="opacity-50 text-xxs">
+        <span className="uppercase">Url Parameters</span>
+        {selectedGroup && !showGroups && <span className="pl-1">[{selectedGroup.name} group]</span>}
       </h2>
       {filteredParams?.length > 0 ? (
-        <div className={`${filteredParams.length > 14 ? styles.paramsScrollContainer : ''}`}>
+        <div className={cn(filteredParams.length > 14 && 'max-h-[350px] overflow-y-auto')}>
           <TooltipProvider>
             {filteredParams.map((param, index) => (
-              <div key={param.id} className={styles.paramItem}>
+              <div key={param.id} className="flex mt-1 gap-2 items-center">
                 <KeyTooltip index={index} />
-                <div className={styles.paramTitle}>
+                <div className="flex-1">
                   {editedParam?.id === param.id ? (
                     <Input
                       type="text"
-                      className={`${!editedParam?.title.trim() ? styles.paramEditedFieldInvalid : styles.paramEditedField}`}
+                      className={cn('text-xs', !editedParam?.title.trim() && 'border-red-500')}
                       value={editedParam.title}
                       onChange={(e) => setEditedParam({ ...editedParam, title: e.target.value })}
                       onKeyDown={(e) => e.key === 'Enter' && handleSave()}
                     />
                   ) : (
                     <Button
+                      size="sm"
+                      className="p-0 h-auto"
                       variant="link"
-                      className={styles.paramLink}
                       onClick={() => handleOpenTab(param.title)}
                       title={param.title}
                     >
@@ -134,7 +125,7 @@ const ParamsList: React.FC = () => {
                     </Button>
                   )}
                 </div>
-                <div className={styles.paramActions}>
+                <div className="flex">
                   {editedParam?.id === param.id ? (
                     <>
                       <Button size="icon" variant="ghost" aria-label="Save" title="Save" onClick={handleSave}>
@@ -156,8 +147,11 @@ const ParamsList: React.FC = () => {
                         <DM.DropdownMenuTrigger>
                           <DotsVerticalIcon />
                         </DM.DropdownMenuTrigger>
-                        <DM.DropdownMenuContent className={styles.paramsDropdownContent}>
-                          <DM.DropdownMenuLabel title={param.title} className={styles.paramDropdownHeding}>
+                        <DM.DropdownMenuContent className="mr-5 [&_svg]:w-[12px] [&_svg]:h-[12px]">
+                          <DM.DropdownMenuLabel
+                            title={param.title}
+                            className="max-w-40 text-ellipsis overflow-hidden text-nowrap"
+                          >
                             {param.title}
                           </DM.DropdownMenuLabel>
                           <DM.DropdownMenuSeparator />
@@ -210,7 +204,7 @@ const ParamsList: React.FC = () => {
             <Button
               variant="secondary"
               size="sm"
-              className={styles.btnShowGroups}
+              className="mt-1 [&_svg]:w-[12px] [&_svg]:h-[12px]"
               onClick={() => dispatch(setPreference({ property: 'showGroups', value: true }))}
             >
               <ArchiveIcon /> Show all groups

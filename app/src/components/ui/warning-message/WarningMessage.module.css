@@ -1,7 +1,0 @@
-.warning {
-  @apply mb-3 py-2 px-3 flex items-start gap-2 rounded text-xs bg-orange-100 text-orange-700;
-}
-
-.button {
-  @apply p-1 h-auto min-h-0 w-auto min-w-0 [&_svg]:w-[12px] [&_svg]:h-[12px] text-orange-700;
-}

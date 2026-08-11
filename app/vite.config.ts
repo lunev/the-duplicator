@@ -7,10 +7,10 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'build',
+    modulePreload: false,
     rollupOptions: {
       input: {
         main: './index.html',
-        options: './options.html',
         'service-worker': './src/service-worker/service-worker.ts',
       },
       output: {
@@ -42,8 +42,6 @@ export default defineConfig({
         'src/constants/*',
         'src/main.tsx',
         'src/App.tsx',
-        'src/options.tsx',
-        'src/OptionsApp.tsx',
         'src/app/*',
         'src/vite-env.d.ts',
       ],

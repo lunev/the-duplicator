@@ -8,6 +8,13 @@ vi.mock('@/utils/utils', () => ({
   handleExport: vi.fn(),
 }));
 
+const { mockNavigate } = vi.hoisted(() => ({ mockNavigate: vi.fn() }));
+
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual<typeof import('react-router-dom')>('react-router-dom');
+  return { ...actual, useNavigate: () => mockNavigate };
+});
+
 describe('Header', () => {
   it('displays header without "Basic Mode" badge by default', () => {
     renderWithProviders(<Header />);
@@ -70,7 +77,7 @@ describe('Header', () => {
     });
   });
 
-  it('opens options page when "Import Parameters" is clicked', async () => {
+  it('navigates to the import params page when "Import Parameters" is clicked', async () => {
     renderWithProviders(<Header />);
 
     const user = userEvent.setup();
@@ -86,7 +93,7 @@ describe('Header', () => {
     }
 
     await waitFor(() => {
-      expect(chrome.runtime.openOptionsPage).toHaveBeenCalled();
+      expect(mockNavigate).toHaveBeenCalledWith('/import-params');
     });
   });
 });

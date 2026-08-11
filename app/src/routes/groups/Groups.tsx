@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { addGroup, removeGroup, updateGroup, activateGroup } from '@/features/groups/groups-slice';
-import { showToast } from '@/utils/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Form from '@/components/ui/form/Form';
@@ -11,7 +10,6 @@ import { Group } from '@/types';
 import { nanoid } from 'nanoid';
 import { ArrowLeftIcon, CheckIcon, Cross2Icon, DotsVerticalIcon, Pencil1Icon, TrashIcon } from '@radix-ui/react-icons';
 import { GENERAL_GROUP } from '@/constants';
-import styles from './Groups.module.css';
 
 const Groups: React.FC = () => {
   const [editedGroup, setEditedGroup] = useState<Group | null>(null);
@@ -32,7 +30,6 @@ const Groups: React.FC = () => {
     if (editedGroup) {
       const updatedGroup = { ...editedGroup, name: editedGroup.name };
       dispatch(updateGroup(updatedGroup));
-      showToast(<>The group has been renamed</>);
       setEditedGroup(null);
     }
   };
@@ -40,29 +37,24 @@ const Groups: React.FC = () => {
   const handleRemove = (group: Group) => {
     dispatch(removeGroup(group));
     dispatch(activateGroup({ groupId: GENERAL_GROUP }));
-    showToast(
-      <>
-        The <strong>{group.name}</strong> group has been removed
-      </>,
-    );
   };
 
   return (
     <>
-      <Link to="/" className={styles.buttonBack}>
+      <Link to="/" className="mb-4 inline-flex gap-1 items-center underline hover:no-underline">
         <ArrowLeftIcon style={{ width: '12px', height: '12px' }} />
         Back to Dashboard
       </Link>
-      <h2 className={styles.subheading}>Groups</h2>
+      <h2 className="uppercase opacity-50 text-xxs">Groups</h2>
       {groups.length > 0 ? (
         groups.map((group) => (
-          <div key={group.id} className={styles.groupItem}>
+          <div key={group.id} className="flex items-center gap-2 mb-1">
             {editedGroup?.id === group.id ? (
-              <form onSubmit={handleSave} className={styles.form}>
+              <form onSubmit={handleSave} className="w-full flex items-center">
                 <Input
                   type="text"
                   value={editedGroup.name}
-                  className={styles.input}
+                  className="mt-1 mr-2 text-xs flex-1"
                   placeholder="Enter a group name"
                   required
                   onChange={(e) => setEditedGroup({ ...editedGroup, name: e.target.value })}
@@ -83,12 +75,12 @@ const Groups: React.FC = () => {
               </form>
             ) : (
               <>
-                <div className={styles.name}>{group.name}</div>
+                <div className="flex-1">{group.name}</div>
                 <DM.DropdownMenu>
                   <DM.DropdownMenuTrigger>
                     <DotsVerticalIcon />
                   </DM.DropdownMenuTrigger>
-                  <DM.DropdownMenuContent className={styles.dropdownMenuContent}>
+                  <DM.DropdownMenuContent className="mr-5 [&_svg]:w-[12px] [&_svg]:h-[12px]">
                     <DM.DropdownMenuLabel>{group.name}</DM.DropdownMenuLabel>
                     <DM.DropdownMenuSeparator />
                     <DM.DropdownMenuItem onClick={() => handleEdit(group.id)}>
@@ -107,7 +99,7 @@ const Groups: React.FC = () => {
         <p>No groups</p>
       )}
       <Form
-        className={styles.formAdd}
+        className="mt-4"
         label="Group name"
         placeholder="Enter a group name"
         button="Add"
@@ -116,11 +108,6 @@ const Groups: React.FC = () => {
           const newGroup: Group = { id: nanoid(), name: groupName, items: [], selected: groups.length === 0 };
           dispatch(addGroup(newGroup));
         }}
-        toastMessage={(groupName) => (
-          <>
-            The new <strong>{groupName}</strong> group has been created
-          </>
-        )}
       />
     </>
   );

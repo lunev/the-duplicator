@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { showToast } from '@/utils/utils';
-import styles from './Form.module.css';
+import { cn } from '@/lib/utils';
 
 interface FormType {
   label: string;
@@ -25,6 +25,7 @@ const Form: React.FC<FormType> = ({
 }) => {
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
+  const errorId = useId();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -44,21 +45,30 @@ const Form: React.FC<FormType> = ({
 
   return (
     <form onSubmit={handleSubmit} role="form" className={className}>
-      <label className={styles.label}>{label}</label>
-      <div className={styles.formGroup}>
+      <label className="pb-1 block text-xxs uppercase opacity-50">{label}</label>
+      <div className="flex gap-2">
         <Input
           type="text"
-          className={styles.input}
+          className={cn('text-xs flex-1', error && 'border-red-500 focus-visible:ring-red-500')}
           placeholder={placeholder}
           value={inputValue}
           autoFocus={autofocus}
-          onChange={(e) => setInputValue(e.target.value)}
+          aria-invalid={!!error}
+          aria-describedby={error ? errorId : undefined}
+          onChange={(e) => {
+            setInputValue(e.target.value);
+            if (error) setError('');
+          }}
         />
-        <Button type="submit" variant="outline" className={styles.button}>
+        <Button type="submit" variant="outline" className="text-xs uppercase">
           {button}
         </Button>
       </div>
-      {error && <div className={styles.error}>{error}</div>}
+      {error && (
+        <div id={errorId} role="alert" className="mt-1 flex items-center gap-1 text-red-500 dark:text-red-400">
+          {error}
+        </div>
+      )}
     </form>
   );
 };

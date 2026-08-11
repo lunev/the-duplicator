@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-The Duplicator is a Chrome Manifest V3 extension (popup + options page + side panel + background service worker) for duplicating tabs with custom URL parameters. Built with React, Redux Toolkit, Vite, TypeScript, Tailwind, and shadcn/ui (Radix primitives).
+The Duplicator is a Chrome Manifest V3 extension (popup + side panel + background service worker) for duplicating tabs with custom URL parameters. Built with React, Redux Toolkit, Vite, TypeScript, Tailwind, and shadcn/ui (Radix primitives).
 
 ## Repo layout
 
@@ -12,9 +12,8 @@ The Duplicator is a Chrome Manifest V3 extension (popup + options page + side pa
 - `design/` — promotional art assets, not part of the build.
 - `chrome-webstore/` — Chrome Web Store listing material: `releases/` (committed release zips), `description.md` (store description, ≤16,000 chars, plain text), `testing-instructions.md` (reviewer testing steps, ≤500 chars, plain text). Both `.md` files must stay within those limits since they're pasted verbatim into Chrome Web Store form fields.
 
-Three entry points, all defined in `app/vite.config.ts`:
-- `index.html` → `src/main.tsx`/`src/App.tsx` — popup and side panel (both use the same page)
-- `options.html` → `src/options/options.tsx` — options page
+Two entry points, both defined in `app/vite.config.ts`:
+- `index.html` → `src/main.tsx`/`src/App.tsx` — popup and side panel (both use the same page); routes include `/import-params` (JSON import) and `/settings` (preference toggles)
 - `src/service-worker/service-worker.ts` — MV3 background service worker, built to a fixed `service-worker.js` filename (no content hash) since `public/manifest.json` references it by exact name
 
 State persistence uses `redux-persist-webextension-storage`, not localStorage, since extension pages/workers don't share a single DOM storage context.

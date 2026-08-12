@@ -1,7 +1,7 @@
 import * as TT from '@/components/ui/tooltip';
 
 const KEY_CLASS =
-  'min-w-5 h-5 flex items-center justify-center px-1 text-xxs text-center border rounded drop-shadow-sm cursor-default';
+  'min-w-5 h-5 flex items-center justify-center px-1 text-xxs text-center border rounded drop-shadow-xs cursor-default';
 
 const KeyTooltip: React.FC<{ index: number }> = ({ index }) => {
   return (

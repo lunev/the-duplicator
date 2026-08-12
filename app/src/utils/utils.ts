@@ -58,9 +58,10 @@ export const mergeParams = (oldParams: Param[], importedParams: Param[]): Param[
   return Array.from(uniqueItems.values());
 };
 
-export const showToast = (description: React.ReactNode) => {
+export const showToast = (description: React.ReactNode, variant: 'default' | 'destructive' = 'default') => {
   toast({
     description,
+    variant,
     className: cn('fixed top-2 right-2 flex max-w-[300px]'),
     duration: 3000,
   });

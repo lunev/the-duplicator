@@ -9,7 +9,6 @@ const ImportParams: React.FC = () => {
         <ArrowLeftIcon style={{ width: '12px', height: '12px' }} />
         Back to Dashboard
       </Link>
-      <h2 className="uppercase opacity-50 text-xxs">Import Params</h2>
       <ImportParamsForm />
     </>
   );

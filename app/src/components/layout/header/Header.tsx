@@ -23,13 +23,7 @@ const Header: React.FC = () => {
       </div>
       <DM.DropdownMenu>
         <DM.DropdownMenuTrigger asChild>
-          <Button
-            size="icon"
-            variant="ghost"
-            className="size-9 rounded-full hover:bg-accent"
-            aria-label="More actions"
-            data-testid="dropdown-trigger"
-          >
+          <Button size="icon" variant="round" aria-label="More actions" data-testid="dropdown-trigger">
             <DotsVerticalIcon className="size-4" />
           </Button>
         </DM.DropdownMenuTrigger>

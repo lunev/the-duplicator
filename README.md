@@ -34,6 +34,10 @@ Compatible with Google Chrome on both Windows and Mac platforms.
 
 All notable user-facing changes are listed here. Internal work like dependency upgrades, refactors, and build tooling is left out.
 
+### 7.3.0 - 2026-08-12
+- **Redesigned update banner**: The "What's New" banner now appears above your parameter list on every page, not just the dashboard, with a cleaner gradient card and checklist layout so new features are easy to scan.
+- **Animated placeholder examples**: The "New URL Parameter" and "Group name" input fields now show rotating example text that types itself out — like `/admin` or `?ref=partner` — giving you ideas for what to enter.
+
 ### 7.2.1 - 2026-08-12
 - Internal changes only (dependency security fix, dead code cleanup) — nothing new to see here.
 

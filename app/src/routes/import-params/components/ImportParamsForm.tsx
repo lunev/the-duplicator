@@ -55,12 +55,13 @@ const ImportParamsForm: React.FC = () => {
 
   return (
     <>
-      <h2 className="mb-1 opacity-50 text-xxs">URL Parameters</h2>
-      <div className="flex flex-col items-center justify-center gap-3 rounded-lg border-2 border-dashed border-border p-4 text-center">
+      <h2 className="mb-1 opacity-50 text-xxs uppercase">Import URL Parameters</h2>
+      <div
+        className="flex flex-col items-center justify-center gap-3 rounded-lg border-2 border-dashed border-border p-4 text-center cursor-pointer"
+        onClick={() => inputFileRef.current?.click()}
+      >
         <p className="text-sm text-muted-foreground">Select a JSON file to import</p>
-        <Button size="sm" onClick={() => inputFileRef.current?.click()}>
-          Select file
-        </Button>
+        <Button size="sm">Select file</Button>
         <input
           type="file"
           ref={inputFileRef}

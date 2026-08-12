@@ -86,7 +86,7 @@ const Groups: React.FC = () => {
                     <DM.DropdownMenuItem onClick={() => handleEdit(group.id)}>
                       <Pencil1Icon /> Edit
                     </DM.DropdownMenuItem>
-                    <DM.DropdownMenuItem onClick={() => handleRemove(group)}>
+                    <DM.DropdownMenuItem variant="destructive" onClick={() => handleRemove(group)}>
                       <TrashIcon /> Remove
                     </DM.DropdownMenuItem>
                   </DM.DropdownMenuContent>
@@ -101,7 +101,7 @@ const Groups: React.FC = () => {
       <Form
         className="mt-4"
         label="Group name"
-        placeholder="Enter a group name"
+        typingPlaceholders={['Work', 'Personal', 'Clients', 'Testing']}
         button="Add"
         autofocus={addParam}
         onSubmit={(groupName) => {

@@ -99,7 +99,7 @@ const ParamsList: React.FC = () => {
         {selectedGroup && !showGroups && <span className="pl-1">[{selectedGroup.name} group]</span>}
       </h2>
       {filteredParams?.length > 0 ? (
-        <div className={cn(filteredParams.length > 14 && 'max-h-[350px] overflow-y-auto')}>
+        <div className={cn(filteredParams.length > 14 && 'max-h-87.5 overflow-y-auto')}>
           <TooltipProvider>
             {filteredParams.map((param, index) => (
               <div key={param.id} className="flex mt-1 gap-2 items-center">
@@ -125,15 +125,15 @@ const ParamsList: React.FC = () => {
                     </Button>
                   )}
                 </div>
-                <div className="flex">
+                <div className="flex items-center">
                   {editedParam?.id === param.id ? (
                     <>
-                      <Button size="icon" variant="ghost" aria-label="Save" title="Save" onClick={handleSave}>
+                      <Button size="icon-xs" variant="round" aria-label="Save" title="Save" onClick={handleSave}>
                         <CheckIcon />
                       </Button>
                       <Button
-                        size="icon"
-                        variant="ghost"
+                        size="icon-xs"
+                        variant="round"
                         aria-label="Cancel"
                         title="Cancel"
                         onClick={() => setEditedParam(null)}
@@ -145,9 +145,11 @@ const ParamsList: React.FC = () => {
                     <>
                       <DM.DropdownMenu>
                         <DM.DropdownMenuTrigger>
-                          <DotsVerticalIcon />
+                          <Button size="icon-xs" variant="round">
+                            <DotsVerticalIcon />
+                          </Button>
                         </DM.DropdownMenuTrigger>
-                        <DM.DropdownMenuContent className="mr-5 [&_svg]:w-[12px] [&_svg]:h-[12px]">
+                        <DM.DropdownMenuContent className="mr-5 [&_svg]:w-3 [&_svg]:h-3">
                           <DM.DropdownMenuLabel
                             title={param.title}
                             className="max-w-40 text-ellipsis overflow-hidden text-nowrap"
@@ -177,7 +179,10 @@ const ParamsList: React.FC = () => {
                             </DM.DropdownMenuSub>
                           )}
                           {selectedGroup && selectedGroup.items.includes(param.id) && (
-                            <DM.DropdownMenuItem onClick={() => handleRemoveFromGroup(param, selectedGroup)}>
+                            <DM.DropdownMenuItem
+                              variant="destructive"
+                              onClick={() => handleRemoveFromGroup(param, selectedGroup)}
+                            >
                               <LinkBreak1Icon /> Remove from this group
                             </DM.DropdownMenuItem>
                           )}
@@ -185,7 +190,7 @@ const ParamsList: React.FC = () => {
                           <DM.DropdownMenuItem onClick={() => setEditedParam(param)}>
                             <Pencil1Icon /> Edit
                           </DM.DropdownMenuItem>
-                          <DM.DropdownMenuItem onClick={() => handleRemove(param)}>
+                          <DM.DropdownMenuItem variant="destructive" onClick={() => handleRemove(param)}>
                             <TrashIcon /> Remove
                           </DM.DropdownMenuItem>
                         </DM.DropdownMenuContent>
@@ -204,7 +209,7 @@ const ParamsList: React.FC = () => {
             <Button
               variant="secondary"
               size="sm"
-              className="mt-1 [&_svg]:w-[12px] [&_svg]:h-[12px]"
+              className="mt-1 [&_svg]:w-3 [&_svg]:h-3"
               onClick={() => dispatch(setPreference({ property: 'showGroups', value: true }))}
             >
               <ArchiveIcon /> Show all groups

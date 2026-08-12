@@ -10,16 +10,16 @@ export interface ChangelogEntry {
 }
 
 export const CHANGELOG: ChangelogEntry = {
-  version: '7.2.0',
+  version: '7.3.0',
   title: "What's New",
   features: [
     {
-      title: 'Redesigned Import Params',
-      description: 'Selecting a file now imports it automatically, with a toast notification confirming success or explaining what went wrong.',
+      title: 'Redesigned update banner',
+      description: 'This "What\'s New" banner now appears on every page with a cleaner, easier-to-scan design.',
     },
     {
-      title: 'Smarter forms',
-      description: "The Add/Go buttons are disabled until you've entered something, instead of letting you submit and then showing an error.",
+      title: 'Animated placeholder examples',
+      description: 'The URL parameter and group name fields now show animated example text to help you get started.',
     },
   ],
 };

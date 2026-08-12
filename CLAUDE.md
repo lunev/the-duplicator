@@ -32,7 +32,6 @@ Run from `app/`:
 
 ## Gotchas
 
-- `app/scripts/release.js` and `app/scripts/buildPrev.js` are a **work-in-progress replacement** for `build-zip.js`/`extractZip.js`. They are not wired into any npm script and depend on `zip-a-folder`, which isn't installed — don't invoke them or suggest `npm run release` (doesn't exist). Don't delete them; they're mid-migration. They still target a `release/` folder relative to `app/`, not `chrome-webstore/releases/` — that hasn't been updated to match the new layout.
 - Built release zips under `chrome-webstore/releases/*.zip` are intentionally committed to git as release artifacts. Don't run a production build just to "verify" it works unless you intend to regenerate the current version's zip — `build-zip.js` overwrites it in place with new (differently-timestamped) archive bytes even when the source is unchanged.
 - Test coverage thresholds in `app/vite.config.ts` only apply to a narrow subset of `src/**` (many dirs like `src/features/*` are excluded) — don't treat the 80/70/80/85% thresholds as covering the whole codebase.
 - No CI is configured (no `.github/workflows`) — there's no automated gate on lint/test/build.

@@ -30,9 +30,16 @@ Imagine you're on a tab with the URL "www.test.com." The Duplicator Extension al
 
 Compatible with Google Chrome on both Windows and Mac platforms.
 
-## Updates
+## Changelog
 
-Regular updates ensure the extension stays optimized for user activities and addresses any reported issues promptly.
+All notable user-facing changes are listed here. Internal work like dependency upgrades, refactors, and build tooling is left out.
+
+### 7.2.1 - 2026-08-12
+- Internal changes only (dependency security fix, dead code cleanup) — nothing new to see here.
+
+### 7.2.0 - 2026-08-12
+- **Redesigned Import Params**: Selecting a file now imports it automatically — no more separate Import button — with a toast notification confirming success or explaining what went wrong.
+- **Smarter forms**: The Add/Go buttons are disabled until you've entered something, instead of letting you submit and then showing an error.
 
 ## User Interface
 

@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { STORAGE_KEYS } from '@/constants';
-import update from './update.json';
+import { CHANGELOG } from '@/constants/changelog';
 import { Button } from '@/components/ui/button';
 import { Cross1Icon } from '@radix-ui/react-icons';
 
 const UpdateInfo: React.FC = () => {
   const [updatesAvailable, setUpdatesAvailable] = useState<boolean>(false);
-  const { title, version, features } = update.updateMessage;
+  const { title, version, features } = CHANGELOG;
 
   const handleClose = () => {
     setUpdatesAvailable(false);
@@ -45,7 +45,7 @@ const UpdateInfo: React.FC = () => {
         </ul>
       </div>
       <Button
-        className="p-1 h-auto min-h-0 w-auto min-w-0 [&_svg]:w-[12px] [&_svg]:h-[12px] text-sky-700 dark:text-blue-300"
+        className="p-1 h-auto min-h-0 w-auto min-w-0 [&_svg]:w-3 [&_svg]:h-3 text-sky-700 dark:text-blue-300"
         aria-label="Close"
         size="icon"
         variant="link"

@@ -24,6 +24,7 @@ Run from `app/`:
 - `npm run dev` — Vite dev server with HMR, for the popup/side panel UI only — the background service worker won't run under it.
 - `npm run watch` — `vite build --watch`. Watch-mode full-extension build, no HMR. Use this instead of `dev` when the service worker needs to run. After changes rebuild, reload the unpacked extension at `chrome://extensions`.
 - `npm run build` — typecheck (`tsc -b`) → production `vite build`. Does not zip.
+- **When iterating on changes you want to see live, start `npm run watch` (or `npm run dev` for popup/side-panel-only UI work) in the background for the session** — don't rely on a one-off `npm run build` at the end, since its output goes stale the moment you make another edit.
 - `npm run release` — `npm run build`, then `scripts/release.js` zips `app/build/` into `chrome-webstore/releases/<name>-v<version>.zip`, using the version from `app/public/manifest.json`. This script is copy/paste-portable across the other extension repos in this account (manage-x, parents-reminder, 0hours) — keep it in sync if you improve it.
 - `npm test` — Vitest in watch mode. `npm run test:coverage` — `vitest run --coverage`.
 - `npm run lint` / `npm run format` — ESLint / Prettier.

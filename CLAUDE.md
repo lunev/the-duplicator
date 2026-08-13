@@ -10,7 +10,7 @@ The Duplicator is a Chrome Manifest V3 extension (popup + side panel + backgroun
 
 - `app/` — the entire buildable project: `package.json`, source, config, tests, build scripts. **Run all npm commands from inside `app/`, not the repo root.**
 - `design/` — promotional art assets, not part of the build.
-- `chrome-webstore/` — Chrome Web Store listing material: `releases/` (committed release zips), `description.md` (store description, ≤16,000 chars, plain text), `testing-instructions.md` (reviewer testing steps, ≤500 chars, plain text). Both `.md` files must stay within those limits since they're pasted verbatim into Chrome Web Store form fields.
+- `chrome-webstore/` — Chrome Web Store listing material: `releases/` (committed release zips), `description.txt` (store description, ≤16,000 chars, plain text), `testing-instructions.txt` (reviewer testing steps, ≤500 chars, plain text). Both `.txt` files must stay within those limits since they're pasted verbatim into Chrome Web Store form fields.
 
 Two entry points, both defined in `app/vite.config.ts`:
 - `index.html` → `src/main.tsx`/`src/App.tsx` — popup and side panel (both use the same page); routes include `/import-params` (JSON import) and `/settings` (preference toggles)

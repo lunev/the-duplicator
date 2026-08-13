@@ -21,7 +21,8 @@ State persistence uses `redux-persist-webextension-storage`, not localStorage, s
 ## Commands
 
 Run from `app/`:
-- `npm run dev` — `vite build --watch`. This is a **watch-mode build, not a dev server** — there's no HMR. After changes rebuild, reload the unpacked extension at `chrome://extensions`.
+- `npm run dev` — Vite dev server with HMR, for the popup/side panel UI only — the background service worker won't run under it.
+- `npm run watch` — `vite build --watch`. Watch-mode full-extension build, no HMR. Use this instead of `dev` when the service worker needs to run. After changes rebuild, reload the unpacked extension at `chrome://extensions`.
 - `npm run build` — typecheck (`tsc -b`) → production `vite build`. Does not zip.
 - `npm run release` — `npm run build`, then `scripts/release.js` zips `app/build/` into `chrome-webstore/releases/<name>-v<version>.zip`, using the version from `app/public/manifest.json`. This script is copy/paste-portable across the other extension repos in this account (manage-x, parents-reminder, 0hours) — keep it in sync if you improve it.
 - `npm test` — Vitest in watch mode. `npm run test:coverage` — `vitest run --coverage`.

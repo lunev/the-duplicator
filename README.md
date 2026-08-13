@@ -1,34 +1,56 @@
-# The Duplicator Chrome Extension
+<p align="center">
+  <img src="design/logo/logo.png" width="96" alt="The Duplicator logo">
+</p>
 
-Streamline your workflow with the Duplicator Extension, a powerful tool for effortlessly duplicating Chrome tabs with URL parameters.
+<h1 align="center">The Duplicator</h1>
 
-## Description
+<p align="center">
+  A Chrome extension for duplicating tabs with custom URL parameters, keyboard shortcuts, and export/import.
+</p>
 
-Streamline your workflow with the Duplicator Extension, a powerful tool for effortlessly duplicating Chrome tabs with extra URL parameters. Whether you're an account manager or simply a user seeking efficiency, this extension is designed to save you time and enhance your browsing experience.
+<p align="center">
+  <a href="https://chromewebstore.google.com/detail/the-duplicator/cmbkalfnmgbghjoghgcplcmcijbdijei">Install from the Chrome Web Store</a>
+</p>
 
-## Key Features
+## Features
 
-- **Advanced and Basic Modes**: Tailor your duplication process with advanced mode, allowing you to manage your favorite URL parameters, or opt for the simplicity of basic mode.
-- **Unlimited Extra URL Parameters**: Add and manage an unlimited number of extra URL parameters to meet your specific needs.
-- **Keyboard Shortcuts**: Access the extension easily using keyboard shortcuts (CTRL/CMD + SHIFT + L + NUM [1-9]) for quick duplication.
-- **Export/Import Functionality**: Seamlessly transfer your configured parameters across devices with the export and import features.
+- **Advanced and basic modes** — manage a saved list of URL parameters, or add one-off parameters on the fly.
+- **Unlimited extra URL parameters** — no cap on how many you configure.
+- **Keyboard shortcuts** — `Ctrl/Cmd + Shift + L`, then a number key `1`-`9`, duplicates a tab with a specific saved parameter.
+- **Export/import** — move your configured parameters between devices.
 
-## Target Audience
+## Usage
 
-Ideal for account managers and users who frequently duplicate tabs with additional URL parameters.
+1. Install the extension and pin it to the Chrome toolbar.
+2. Open the tab you want to duplicate.
+3. Click the extension icon, or press `Ctrl/Cmd + Shift + L`.
+4. Type an extra URL parameter and click add (or press Enter).
+5. Click a saved parameter in the popup, or press `Ctrl/Cmd + Shift + L` followed by its number key, to duplicate the tab with it applied.
 
-## Use Cases
+## Development
 
-Imagine you're on a tab with the URL "www.test.com." The Duplicator Extension allows you to duplicate the current tab's domain and add user parameters such as "/admin/" easily through the extension's popup input.
+Manifest V3 extension (popup + side panel + background service worker) built with React, Redux Toolkit, Vite, TypeScript, Tailwind, and shadcn/ui.
 
-## Benefits
+```sh
+cd app
+npm install
+npm run dev   # watch-mode build — no HMR; reload the unpacked extension at chrome://extensions after each rebuild
+```
 
-- **Efficiency**: No more manual copying, pasting, and typing; duplicate tab domain with extra URL parameters in a single click.
-- **Customization**: Tailor your duplication with advanced mode or go for quick duplication with basic mode.
+Load it unpacked in Chrome: `chrome://extensions` → enable Developer mode → **Load unpacked** → select `app/build`.
+
+| Command (run from `app/`) | Purpose |
+| --- | --- |
+| `npm run dev` | Watch-mode build for local development |
+| `npm run build` | Typecheck, production build, and zip for the Chrome Web Store |
+| `npm test` | Run tests (watch mode); `npm run test:coverage` for a coverage report |
+| `npm run lint` / `npm run format` | Lint / format with ESLint / Prettier |
+
+See [`CLAUDE.md`](CLAUDE.md) for repo layout, versioning, and other conventions.
 
 ## Compatibility
 
-Compatible with Google Chrome on both Windows and Mac platforms.
+Google Chrome on Windows and Mac.
 
 ## Changelog
 
@@ -44,16 +66,3 @@ All notable user-facing changes are listed here. Internal work like dependency u
 ### 7.2.0 - 2026-08-12
 - **Redesigned Import Params**: Selecting a file now imports it automatically — no more separate Import button — with a toast notification confirming success or explaining what went wrong.
 - **Smarter forms**: The Add/Go buttons are disabled until you've entered something, instead of letting you submit and then showing an error.
-
-## User Interface
-
-The extension features a user-friendly popup with a list of user-added parameters. Customize your list, add, edit or delete parameters effortlessly. The input field at the footer allows you to type extra URL parameters.
-
-## Instructions
-
-1. Install the extension.
-2. Pin the extension icon to the Google Chrome navbar.
-3. Open the Chrome tab URL you want to duplicate.
-4. Click the extension icon or use CMD/CTRL + SHIFT + L.
-5. Type an extra URL parameter and click the add button or press Enter.
-6. Click on the link in the popup or use keyboard shortcuts (CTRL/CMD + SHIFT + L + NUM [1-9]).

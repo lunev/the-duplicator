@@ -22,16 +22,17 @@ State persistence uses `redux-persist-webextension-storage`, not localStorage, s
 
 Run from `app/`:
 - `npm run dev` — `vite build --watch`. This is a **watch-mode build, not a dev server** — there's no HMR. After changes rebuild, reload the unpacked extension at `chrome://extensions`.
-- `npm run build` — typecheck (`tsc -b`) → production `vite build` → `build-zip.js` zips `app/build/` into `chrome-webstore/releases/<name>-v<version>.zip`, using the version from `app/public/manifest.json`.
+- `npm run build` — typecheck (`tsc -b`) → production `vite build`. Does not zip.
+- `npm run release` — `npm run build`, then `scripts/release.js` zips `app/build/` into `chrome-webstore/releases/<name>-v<version>.zip`, using the version from `app/public/manifest.json`. This script is copy/paste-portable across the other extension repos in this account (manage-x, parents-reminder, 0hours) — keep it in sync if you improve it.
 - `npm test` — Vitest in watch mode. `npm run test:coverage` — `vitest run --coverage`.
 - `npm run lint` / `npm run format` — ESLint / Prettier.
 
 ## Versioning
 
-`app/public/manifest.json`'s `version` field is the source of truth for releases (it's what `build-zip.js` uses to name the release zip). Keep `app/package.json`'s `version` in sync with it manually when bumping.
+`app/public/manifest.json`'s `version` field is the source of truth for releases (it's what `scripts/release.js` uses to name the release zip). Keep `app/package.json`'s `version` in sync with it manually when bumping.
 
 ## Gotchas
 
-- Built release zips under `chrome-webstore/releases/*.zip` are intentionally committed to git as release artifacts. Don't run a production build just to "verify" it works unless you intend to regenerate the current version's zip — `build-zip.js` overwrites it in place with new (differently-timestamped) archive bytes even when the source is unchanged.
+- Built release zips under `chrome-webstore/releases/*.zip` are intentionally committed to git as release artifacts. Don't run `npm run release` just to "verify" it works unless you intend to regenerate the current version's zip — it overwrites the zip in place with new (differently-timestamped) archive bytes even when the source is unchanged. Plain `npm run build` is safe to run at any time since it no longer touches the zip.
 - Test coverage thresholds in `app/vite.config.ts` only apply to a narrow subset of `src/**` (many dirs like `src/features/*` are excluded) — don't treat the 80/70/80/85% thresholds as covering the whole codebase.
 - No CI is configured (no `.github/workflows`) — there's no automated gate on lint/test/build.

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { addGroup, removeGroup, updateGroup, activateGroup } from '@/features/groups/groups-slice';
 import { Button } from '@/components/ui/button';
@@ -8,7 +8,7 @@ import Form from '@/components/ui/form/Form';
 import * as DM from '@/components/ui/dropdown-menu';
 import { Group } from '@/types';
 import { nanoid } from 'nanoid';
-import { ArrowLeftIcon, CheckIcon, Cross2Icon, DotsVerticalIcon, Pencil1Icon, TrashIcon } from '@radix-ui/react-icons';
+import { CheckIcon, Cross2Icon, DotsVerticalIcon, Pencil1Icon, TrashIcon } from '@radix-ui/react-icons';
 import { GENERAL_GROUP } from '@/constants';
 
 const Groups: React.FC = () => {
@@ -41,11 +41,6 @@ const Groups: React.FC = () => {
 
   return (
     <>
-      <Link to="/" className="mb-4 inline-flex gap-1 items-center underline hover:no-underline">
-        <ArrowLeftIcon style={{ width: '12px', height: '12px' }} />
-        Back to Dashboard
-      </Link>
-      <h2 className="uppercase opacity-50 text-xxs">Groups</h2>
       {groups.length > 0 ? (
         groups.map((group) => (
           <div key={group.id} className="flex items-center gap-2 mb-1">

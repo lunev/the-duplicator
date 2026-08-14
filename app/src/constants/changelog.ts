@@ -10,16 +10,13 @@ export interface ChangelogEntry {
 }
 
 export const CHANGELOG: ChangelogEntry = {
-  version: '7.3.0',
+  version: '7.4.0',
   title: "What's New",
   features: [
     {
-      title: 'Redesigned update banner',
-      description: 'This "What\'s New" banner now appears on every page with a cleaner, easier-to-scan design.',
-    },
-    {
-      title: 'Animated placeholder examples',
-      description: 'The URL parameter and group name fields now show animated example text to help you get started.',
+      title: 'Redesigned page header',
+      description:
+        'Settings, Import Parameters, and Groups now show a back arrow and page title in the header instead of a text link.',
     },
   ],
 };

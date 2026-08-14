@@ -1,25 +1,51 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '@/app/hooks';
 import { APP_NAME } from '@/constants';
-import { DotsVerticalIcon, DownloadIcon, GearIcon, UploadIcon } from '@radix-ui/react-icons';
+import { ArrowLeftIcon, DotsVerticalIcon, DownloadIcon, GearIcon, UploadIcon } from '@radix-ui/react-icons';
 import { handleExport } from '@/utils/utils';
 import { Button } from '@/components/ui/button';
 import * as DM from '@/components/ui/dropdown-menu';
 import logo from '@/assets/logo128x128.png';
 
+const PAGE_TITLES: Record<string, string> = {
+  '/settings': 'Settings',
+  '/import-params': 'Import Parameters',
+  '/groups': 'Groups',
+};
+
 const Header: React.FC = () => {
   const { data: params } = useAppSelector((state) => state.params);
   const preferences = useAppSelector((state) => state.preferences);
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const isRoot = pathname === '/';
+  const title = PAGE_TITLES[pathname];
 
   return (
     <header className="fade-in flex items-center gap-3 border-b bg-card px-4 py-3">
       <div className="flex min-w-0 flex-1 items-center gap-2.5">
-        <img src={logo} width="32" height="32" alt={`${APP_NAME} logo`} />
-        <Link to="/" className="truncate text-base font-bold text-foreground">
-          {APP_NAME}
-        </Link>
-        {preferences.basicMode && <span className="text-xxxs -translate-y-1 -translate-x-1">Basic Mode</span>}
+        {isRoot ? (
+          <>
+            <img src={logo} width="32" height="32" alt={`${APP_NAME} logo`} />
+            <Link to="/" className="truncate text-base font-bold text-foreground">
+              {APP_NAME}
+            </Link>
+            {preferences.basicMode && <span className="text-xxxs -translate-y-1 -translate-x-1">Basic Mode</span>}
+          </>
+        ) : (
+          <>
+            <Button
+              size="icon"
+              variant="round"
+              className="-ml-2 shrink-0"
+              aria-label="Back to dashboard"
+              onClick={() => navigate('/')}
+            >
+              <ArrowLeftIcon className="size-4" />
+            </Button>
+            {title && <span className="truncate text-base font-bold text-foreground">{title}</span>}
+          </>
+        )}
       </div>
       <DM.DropdownMenu>
         <DM.DropdownMenuTrigger asChild>

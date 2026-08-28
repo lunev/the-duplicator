@@ -15,6 +15,7 @@ import KeyTooltip from '../keytooltip/KeyTooltip';
 import {
   ArchiveIcon,
   CheckIcon,
+  CopyIcon,
   Cross2Icon,
   DotsVerticalIcon,
   LinkBreak1Icon,
@@ -47,6 +48,15 @@ const ParamsList: React.FC = () => {
   };
 
   const handleOpenTab = (paramURL: string) => (preferences.newTab ? createTab(paramURL) : updateTab(paramURL));
+
+  const handleCopy = async (param: Param) => {
+    try {
+      await navigator.clipboard.writeText(param.title);
+      showToast('Copied to clipboard');
+    } catch {
+      showToast('Failed to copy to clipboard', 'destructive');
+    }
+  };
 
   const moveToGroup = (param: Param, group: Group) => {
     if (!group.items.includes(param.id)) {
@@ -102,7 +112,7 @@ const ParamsList: React.FC = () => {
         <div className={cn(filteredParams.length > 14 && 'max-h-87.5 overflow-y-auto')}>
           <TooltipProvider>
             {filteredParams.map((param, index) => (
-              <div key={param.id} className="flex mt-1 gap-2 items-center">
+              <div key={param.id} className="group flex mt-1 gap-2 items-center">
                 <KeyTooltip index={index} />
                 <div className="flex-1">
                   {editedParam?.id === param.id ? (
@@ -114,15 +124,29 @@ const ParamsList: React.FC = () => {
                       onKeyDown={(e) => e.key === 'Enter' && handleSave()}
                     />
                   ) : (
-                    <Button
-                      size="sm"
-                      className="p-0 h-auto"
-                      variant="link"
-                      onClick={() => handleOpenTab(param.title)}
-                      title={param.title}
-                    >
-                      {param.title}
-                    </Button>
+                    <div className="flex items-center">
+                      <div className="flex-1">
+                        <Button
+                          size="sm"
+                          className="min-w-0 justify-start p-0 h-4.5 rounded-none truncate"
+                          variant="link"
+                          onClick={() => handleOpenTab(param.title)}
+                          title={param.title}
+                        >
+                          {param.title}
+                        </Button>
+                      </div>
+                      <Button
+                        size="icon-xs"
+                        variant="round"
+                        className="shrink-0 opacity-0 transition-opacity group-hover:opacity-100 focus-visible:opacity-100"
+                        aria-label="Copy"
+                        title="Copy"
+                        onClick={() => handleCopy(param)}
+                      >
+                        <CopyIcon />
+                      </Button>
+                    </div>
                   )}
                 </div>
                 <div className="flex items-center">

@@ -7,6 +7,11 @@ global.chrome = {
       get: vi.fn(),
       remove: vi.fn(),
     },
+    local: {
+      set: vi.fn().mockResolvedValue(undefined),
+      get: vi.fn().mockResolvedValue({}),
+      remove: vi.fn().mockResolvedValue(undefined),
+    },
   },
   tabs: {
     query: vi.fn(),

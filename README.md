@@ -59,6 +59,10 @@ Google Chrome on Windows and Mac.
 
 All notable user-facing changes are listed here. Internal work like dependency upgrades, refactors, and build tooling is left out.
 
+### 7.5.0 - 2026-08-28
+- **Feedback & Support**: A dismissible corner prompt and a new "Support" item in the header menu now link directly to the Chrome Web Store support page, so you can ask a question, make a suggestion, or report a problem.
+- **Copy parameter**: Each URL parameter now has a copy icon, revealed on hover, to quickly copy it to your clipboard.
+
 ### 7.4.0 - 2026-08-14
 - **Redesigned page header**: Settings, Import Parameters, and Groups now show a back arrow and the page title right in the header, replacing the old "Back to Dashboard" text link.
 

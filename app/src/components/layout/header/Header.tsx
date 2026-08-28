@@ -1,7 +1,14 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '@/app/hooks';
 import { APP_NAME } from '@/constants';
-import { ArrowLeftIcon, DotsVerticalIcon, DownloadIcon, GearIcon, UploadIcon } from '@radix-ui/react-icons';
+import {
+  ArrowLeftIcon,
+  ChatBubbleIcon,
+  DotsVerticalIcon,
+  DownloadIcon,
+  GearIcon,
+  UploadIcon,
+} from '@radix-ui/react-icons';
 import { handleExport } from '@/utils/utils';
 import { Button } from '@/components/ui/button';
 import * as DM from '@/components/ui/dropdown-menu';
@@ -65,6 +72,15 @@ const Header: React.FC = () => {
           <DM.DropdownMenuSeparator />
           <DM.DropdownMenuItem onClick={() => navigate('/settings')}>
             <GearIcon /> Settings
+          </DM.DropdownMenuItem>
+          <DM.DropdownMenuItem asChild>
+            <a
+              href="https://chromewebstore.google.com/detail/the-duplicator/cmbkalfnmgbghjoghgcplcmcijbdijei/support"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <ChatBubbleIcon /> Support
+            </a>
           </DM.DropdownMenuItem>
         </DM.DropdownMenuContent>
       </DM.DropdownMenu>

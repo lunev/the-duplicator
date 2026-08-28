@@ -10,13 +10,17 @@ export interface ChangelogEntry {
 }
 
 export const CHANGELOG: ChangelogEntry = {
-  version: '7.4.0',
+  version: '7.5.0',
   title: "What's New",
   features: [
     {
-      title: 'Redesigned page header',
+      title: 'Feedback & Support',
       description:
-        'Settings, Import Parameters, and Groups now show a back arrow and page title in the header instead of a text link.',
+        'A dismissible corner prompt and a new "Support" item in the header menu now link to the Chrome Web Store support page.',
+    },
+    {
+      title: 'Copy parameter',
+      description: 'Each URL parameter now has a copy icon, revealed on hover, to copy it to your clipboard.',
     },
   ],
 };

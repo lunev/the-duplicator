@@ -11,7 +11,9 @@
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "knip": "knip",
+    "jscpd": "jscpd src"
   },
   "dependencies": {
     "@anthropic-ai/claude-code": "^2.1.220",
@@ -61,8 +63,12 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.4.9",
+    "eslint-plugin-simple-import-sort": "^14.0.0",
+    "eslint-plugin-sonarjs": "^4.2.0",
     "globals": "^15.11.0",
+    "jscpd": "^5.2.0",
     "jsdom": "^25.0.1",
+    "knip": "^6.35.1",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
     "tailwindcss": "^4.3.3",

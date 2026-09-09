@@ -1,6 +1,3 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useAppSelector } from '@/app/hooks';
-import { APP_NAME, APP_SHORT_NAME } from '@/constants';
 import {
   ArrowLeftIcon,
   ChatBubbleIcon,
@@ -9,10 +6,14 @@ import {
   GearIcon,
   UploadIcon,
 } from '@radix-ui/react-icons';
-import { handleExport } from '@/utils/utils';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+import { useAppSelector } from '@/app/hooks';
+import logo from '@/assets/logo128x128.png';
 import { Button } from '@/components/ui/button';
 import * as DM from '@/components/ui/dropdown-menu';
-import logo from '@/assets/logo128x128.png';
+import { APP_NAME, APP_SHORT_NAME } from '@/constants';
+import { handleExport } from '@/utils/utils';
 
 const PAGE_TITLES: Record<string, string> = {
   '/settings': 'Settings',

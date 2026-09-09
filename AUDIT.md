@@ -89,4 +89,5 @@ Ran the `/simplify` skill (4 parallel review agents: reuse, simplification, effi
 
 ## Housekeeping (not part of the cleanup scope, noted in passing)
 
-- `npm audit` reports 7 vulnerabilities (6 moderate, 1 high) in the `vitest`/`browserslist` devDependency chain, all with fixes available via `npm audit fix`. Unrelated to this audit's tooling additions — pre-existing.
+- [x] `npm audit` reported 7 vulnerabilities (6 moderate, 1 high) in the `browserslist`/`@humanfs` devDependency chain. Ran plain `npm audit fix` (2026-09-09) — resolved the `browserslist` (high) and `@humanfs/node` (moderate) advisories via non-breaking bumps; build and lint reverified clean afterward.
+- [ ] 5 moderate vulnerabilities remain, all `@vitest/mocker` → `vitest`/`@vitest/browser`/`@vitest/coverage-v8`/`@vitest/ui` (path traversal in mocker's redirect-mock handling). Fixing requires a Vitest v4 → v5 major bump, which `npm audit fix` won't do without `--force` — deliberately not applied here since it could break the test suite. Needs its own pass: bump, run `npm test` / `npm run test:coverage`, fix any breakage.

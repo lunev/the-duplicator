@@ -4,9 +4,9 @@ import { addParam } from '@/features/params/params-slice';
 import { addParamToGroup } from '@/features/groups/groups-slice';
 import { Param } from '@/types';
 import { createTab, updateTab } from '@/utils/utils';
-import Form from '@/components/ui/form/Form';
-import ParamsList from './components/params/Params';
-import TabGroups from './components/tabgroups/TabGroups';
+import Form from '@/components/ui/Form';
+import ParamsList from './components/Params';
+import TabGroups from './components/TabGroups';
 
 const Dashboard: React.FC = () => {
   const { basicMode, showForm, showGroups } = useAppSelector((state) => state.preferences);

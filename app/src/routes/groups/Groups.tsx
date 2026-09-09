@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { addGroup, removeGroup, updateGroup, activateGroup } from '@/features/groups/groups-slice';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import Form from '@/components/ui/form/Form';
+import Form from '@/components/ui/Form';
 import * as DM from '@/components/ui/dropdown-menu';
 import { Group } from '@/types';
 import { nanoid } from 'nanoid';

@@ -4,7 +4,7 @@ Tracking file for Chrome Web Store submission requirements: permission justifica
 
 ## Single Purpose
 
-The Duplicator lets a user duplicate the current browser tab (or navigate it in place) while appending a custom URL parameter/path from a list the user defines and manages. Every permission below exists to support that one purpose.
+This extension lets a user duplicate the current browser tab (or navigate it in place) while appending a custom URL parameter/path from a list the user defines and manages. Every permission below exists to support that one purpose.
 
 ## Permission Justifications
 

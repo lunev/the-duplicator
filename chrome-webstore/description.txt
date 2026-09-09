@@ -1,46 +1,31 @@
-Streamline your workflow with The Duplicator, a powerful tool for effortlessly duplicating Chrome tabs with extra URL parameters. Whether you're an account manager or simply a user seeking efficiency, this extension is designed to save you time and enhance your browsing experience.
+Duplicate the current Chrome tab and instantly add a custom URL parameter — the fastest way to test admin flags, environment overrides, tracking params, or any query string you use every day.
 
-Key Features
+FEATURES
+• Duplicate with parameters — append a saved parameter or path to the current tab's URL in one click, either opening a new tab or updating the current one.
+• Basic and Advanced modes — Basic mode for quick one-off duplication, Advanced mode to manage a full list of reusable parameters.
+• Unlimited saved parameters — save as many URL parameters or paths as you need.
+• Parameter groups — organize saved parameters into groups and filter the list down to just one group at a time.
+• Drag-to-reorder — reorder your saved parameters by dragging, since list order controls which number key (1-9) triggers each one.
+• Keyboard shortcuts — open the extension and fire a saved parameter without touching the mouse: Ctrl/Cmd+Shift+L, then a number key (1-9).
+• Side panel support — pin the extension to Chrome's side panel for a persistent view alongside your tabs, or use the classic popup.
+• Copy to clipboard — copy any saved parameter with one click.
+• Export/import — back up your parameter list or move it to another machine as a JSON file.
 
-Advanced and Basic Modes: Tailor your duplication process with advanced mode, allowing you to manage your favorite URL parameters, or opt for the simplicity of basic mode.
+HOW TO USE
+1. Click the extension icon in the toolbar, or press Ctrl/Cmd+Shift+L.
+2. Type a URL parameter or path (for example: admin, or ?debug=true) and press Enter to save it.
+3. Click a saved parameter to open a duplicate tab with it appended, or press Ctrl/Cmd+Shift+L then a number key (1-9) for instant recall.
+4. Drag a parameter's handle to reorder the list and change its shortcut number. Switch to Advanced mode to organize parameters into groups, or export/import your list as JSON.
 
-Unlimited Extra URL Parameters: Add and manage an unlimited number of extra URL parameters to meet your specific needs.
+PRIVACY
+This extension does not collect any personal data and makes no network requests of any kind. Your saved URL parameters, groups, and preferences are stored locally via Chrome's storage API, and sync across your own signed-in Chrome browsers the same way your bookmarks do. Nothing is ever sent to the developer or any third party.
 
-Keyboard Shortcuts: Access the extension easily using keyboard shortcuts (CTRL/CMD + SHIFT + L + NUM 1-9) for quick duplication.
+PERMISSIONS
+• "storage" — saves your URL parameters, groups, and preferences so they persist between sessions.
+• "activeTab" — reads the current tab's URL only when you click the icon or use the keyboard shortcut, to build the duplicated tab's URL. No other open tabs are ever read.
+• "sidePanel" — enables the optional side panel view.
 
-Export/Import Functionality: Seamlessly transfer your configured parameters across devices with the export and import features.
+SUPPORT
+Found a bug or have a feature request? Use the Support tab on this listing, or the Support link in the extension's header menu.
 
-Target Audience
-
-Ideal for account managers and users who frequently duplicate tabs with additional URL parameters.
-
-Use Cases
-
-Imagine you're on a tab with the URL www.test.com. The Duplicator Extension allows you to duplicate the current tab's domain and add user parameters such as /admin/ easily through the extension's popup input.
-
-Benefits
-
-Efficiency: No more manual copying, pasting, and typing; duplicate a tab's domain with extra URL parameters in a single click.
-
-Customization: Tailor your duplication with advanced mode or go for quick duplication with basic mode.
-
-Compatibility
-
-Compatible with Google Chrome on both Windows and Mac platforms.
-
-Updates
-
-Regular updates ensure the extension stays optimized for user activities and addresses any reported issues promptly.
-
-User Interface
-
-The extension features a user-friendly popup with a list of user-added parameters. Customize your list, add, edit, or delete parameters effortlessly. The input field at the footer allows you to type extra URL parameters.
-
-Instructions
-
-1. Install the extension.
-2. Pin the extension icon to the Google Chrome navbar.
-3. Open the Chrome tab URL you want to duplicate.
-4. Click the extension icon or use CMD/CTRL + SHIFT + L.
-5. Type an extra URL parameter and click the add button or press Enter.
-6. Click on the link in the popup or use keyboard shortcuts (CTRL/CMD + SHIFT + L + NUM 1-9).
+Version 7.6.0 — Renamed to Tab Duplicator: Custom URL Parameters, added drag-to-reorder for your saved parameters, and rewrote this listing with a full feature breakdown.

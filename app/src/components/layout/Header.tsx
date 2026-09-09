@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '@/app/hooks';
-import { APP_NAME } from '@/constants';
+import { APP_NAME, APP_SHORT_NAME } from '@/constants';
 import {
   ArrowLeftIcon,
   ChatBubbleIcon,
@@ -35,7 +35,7 @@ const Header: React.FC = () => {
           <>
             <img src={logo} width="32" height="32" alt={`${APP_NAME} logo`} />
             <Link to="/" className="truncate text-base font-bold text-foreground">
-              {APP_NAME}
+              {APP_SHORT_NAME}
             </Link>
             {preferences.basicMode && <span className="text-xxxs -translate-y-1 -translate-x-1">Basic Mode</span>}
           </>
@@ -60,7 +60,7 @@ const Header: React.FC = () => {
             <DotsVerticalIcon className="size-4" />
           </Button>
         </DM.DropdownMenuTrigger>
-        <DM.DropdownMenuContent className="mr-4 [&_svg]:w-[12px] [&_svg]:h-[12px]">
+        <DM.DropdownMenuContent className="mr-4 [&_svg]:w-3 [&_svg]:h-[12px]">
           <DM.DropdownMenuItem onClick={() => navigate('/import-params')}>
             <DownloadIcon /> Import Parameters
           </DM.DropdownMenuItem>

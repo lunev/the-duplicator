@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="design/logo/logo.png" width="96" alt="The Duplicator logo">
+  <img src="design/logo/logo.png" width="96" alt="Tab Duplicator: Custom URL Parameters logo">
 </p>
 
-<h1 align="center">The Duplicator</h1>
+<h1 align="center">Tab Duplicator: Custom URL Parameters</h1>
 
 <p align="center">
   A Chrome extension for duplicating tabs with custom URL parameters, keyboard shortcuts, and export/import.
@@ -16,6 +16,8 @@
 
 - **Advanced and basic modes** — manage a saved list of URL parameters, or add one-off parameters on the fly.
 - **Unlimited extra URL parameters** — no cap on how many you configure.
+- **Parameter groups** — organize saved parameters into groups and filter the list down to one group at a time.
+- **Drag-to-reorder** — reorder saved parameters by dragging, since list order controls which number key triggers each one.
 - **Keyboard shortcuts** — `Ctrl/Cmd + Shift + L`, then a number key `1`-`9`, duplicates a tab with a specific saved parameter.
 - **Export/import** — move your configured parameters between devices.
 
@@ -58,6 +60,10 @@ Google Chrome on Windows and Mac.
 ## Changelog
 
 All notable user-facing changes are listed here. Internal work like dependency upgrades, refactors, and build tooling is left out.
+
+### 7.6.0 - 2026-09-09
+- **New name**: Renamed to "Tab Duplicator: Custom URL Parameters" to be easier to find in the Chrome Web Store — same extension, same data, no action needed.
+- **Drag-to-reorder**: Reorder your saved URL parameters by dragging the handle — list order determines which number key (1-9) opens each one, so you can put your most-used parameters first.
 
 ### 7.5.0 - 2026-08-28
 - **Feedback & Support**: A dismissible corner prompt and a new "Support" item in the header menu now link directly to the Chrome Web Store support page, so you can ask a question, make a suggestion, or report a problem.

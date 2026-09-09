@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
-import UpdateInfo from '@/routes/dashboard/components/updates/UpdateInfo';
+import UpdateInfo from '@/routes/dashboard/components/UpdateInfo';
 
 const Main: React.FC<{ children: ReactNode }> = ({ children }) => {
   const location = useLocation();

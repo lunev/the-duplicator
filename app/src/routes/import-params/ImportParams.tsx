@@ -1,4 +1,4 @@
-import ImportParamsForm from './components/ImportParamsForm';
+import ImportParamsForm from './ImportParamsForm';
 
 const ImportParams: React.FC = () => {
   return <ImportParamsForm />;

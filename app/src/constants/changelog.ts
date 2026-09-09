@@ -10,17 +10,18 @@ export interface ChangelogEntry {
 }
 
 export const CHANGELOG: ChangelogEntry = {
-  version: '7.5.0',
+  version: '7.6.0',
   title: "What's New",
   features: [
     {
-      title: 'Feedback & Support',
+      title: 'New name',
       description:
-        'A dismissible corner prompt and a new "Support" item in the header menu now link to the Chrome Web Store support page.',
+        'Renamed to "Tab Duplicator: Custom URL Parameters" to be easier to find in the Chrome Web Store — same extension, same data, no action needed.',
     },
     {
-      title: 'Copy parameter',
-      description: 'Each URL parameter now has a copy icon, revealed on hover, to copy it to your clipboard.',
+      title: 'Drag-to-reorder',
+      description:
+        'Reorder your saved URL parameters by dragging the handle — list order determines which number key (1-9) opens each one, so put your most-used parameters first.',
     },
   ],
 };

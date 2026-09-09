@@ -1,4 +1,4 @@
-import Preferences from './components/Preferences';
+import Preferences from './Preferences';
 
 const Settings: React.FC = () => {
   return <Preferences />;

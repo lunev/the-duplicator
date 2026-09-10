@@ -1,7 +1,8 @@
 import { renderHook } from '@testing-library/react';
-import useParamsShortcut from './useParamsShortcut';
-import { act } from 'react-dom/test-utils';
+import { act } from 'react';
 import type { Mock } from 'vitest';
+
+import useParamsShortcut from './useParamsShortcut';
 
 describe('useParamsShortcut', () => {
   const params = [

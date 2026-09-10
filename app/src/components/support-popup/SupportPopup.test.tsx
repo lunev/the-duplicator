@@ -1,12 +1,7 @@
-import { vi } from 'vitest';
+import { mockStorageLocalGet } from '@test-utils';
 import { render, screen } from '@testing-library/react';
-import SupportPopup from './support-popup';
 
-const mockStorageLocalGet = (value: Record<string, unknown>) => {
-  vi.mocked(chrome.storage.local.get).mockImplementation(
-    (() => Promise.resolve(value)) as typeof chrome.storage.local.get,
-  );
-};
+import SupportPopup from './SupportPopup';
 
 describe('SupportPopup', () => {
   it('links to the Chrome Web Store support page', async () => {

@@ -1,9 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import preferencesSlice, { preferencesTransform } from '@/features/preferences/preferences-slice';
-import paramsSlice from '@/features/params/params-slice';
-import groupsSlice from '@/features/groups/groups-slice';
-import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
+import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER,REHYDRATE } from 'redux-persist';
 import { syncStorage } from 'redux-persist-webextension-storage';
+
+import groupsSlice from '@/features/groups/groups-slice';
+import paramsSlice from '@/features/params/params-slice';
+import preferencesSlice, { preferencesTransform } from '@/features/preferences/preferences-slice';
 
 const syncStorageConfig = {
   key: 'syncStorage',

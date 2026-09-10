@@ -1,5 +1,6 @@
-import { reorderParams } from './reorderParams';
 import { Param } from '@/types';
+
+import { reorderParams } from './reorderParams';
 
 describe('reorderParams', () => {
   const params: Param[] = [

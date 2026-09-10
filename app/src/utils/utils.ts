@@ -1,12 +1,14 @@
-import { Param } from '@/types';
-import { storagePersisted } from './storagePersisted';
 import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
+import { Param } from '@/types';
+
+import { storagePersisted } from './storagePersisted';
 
 export const getFullURL = (currentTabUrl: string = '', urlParam: string) => {
   try {
     const url = new URL(currentTabUrl);
-    const domainUrl = `${url.protocol}//${url.hostname}${url.port ? `:${url.port}` : ''}`;
+    const portSuffix = url.port ? `:${url.port}` : '';
+    const domainUrl = `${url.protocol}//${url.hostname}${portSuffix}`;
     return `${domainUrl}${urlParam}`;
   } catch (error) {
     console.log('Invalid URL:', currentTabUrl, error);
@@ -31,8 +33,7 @@ export const createTab = async (urlParam: string) => {
 };
 
 export const updateTab = async (urlParam: string) => {
-  const preferences = await storagePersisted.get('preferences');
-  const currentTab = await getCurrentTabParams();
+  const [preferences, currentTab] = await Promise.all([storagePersisted.get('preferences'), getCurrentTabParams()]);
   if (currentTab) {
     const { url } = currentTab;
     const fullNewUrl = getFullURL(url, urlParam);
@@ -42,6 +43,19 @@ export const updateTab = async (urlParam: string) => {
       }
     });
   }
+};
+
+export const isValidParamsPayload = (data: unknown): data is Param[] => {
+  return (
+    Array.isArray(data) &&
+    data.every(
+      (item) =>
+        typeof item === 'object' &&
+        item !== null &&
+        Object.prototype.hasOwnProperty.call(item, 'id') &&
+        Object.prototype.hasOwnProperty.call(item, 'title'),
+    )
+  );
 };
 
 export const mergeParams = (oldParams: Param[], importedParams: Param[]): Param[] => {

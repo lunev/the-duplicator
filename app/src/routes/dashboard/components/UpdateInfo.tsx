@@ -1,10 +1,11 @@
+import { CheckCircledIcon, Cross1Icon, RocketIcon } from '@radix-ui/react-icons';
 import { useEffect, useState } from 'react';
+
+import { Button } from '@/components/ui/button';
 import { STORAGE_KEYS } from '@/constants';
 import { CHANGELOG } from '@/constants/changelog';
-import { Button } from '@/components/ui/button';
-import { CheckCircledIcon, Cross1Icon, RocketIcon } from '@radix-ui/react-icons';
 
-const UpdateInfo: React.FC = () => {
+const UpdateInfo = () => {
   const [updatesAvailable, setUpdatesAvailable] = useState<boolean>(false);
   const { title, version, features } = CHANGELOG;
 

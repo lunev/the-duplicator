@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { createTransform } from 'redux-persist';
+
 import { Preferences } from '@/types/';
 
 type ToggleActionPayload = {

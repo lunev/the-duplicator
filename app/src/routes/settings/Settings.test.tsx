@@ -1,15 +1,17 @@
-import Preferences from './Preferences';
 import { initialState, renderWithProviders } from '@test-utils';
 import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import * as hooks from '@/app/hooks';
 import * as utils from '@/utils/utils';
 
-describe('Preferences: Form switch', () => {
+import Settings from './Settings';
+
+describe('Settings: Form switch', () => {
   it('renders in enabled state and dispatches on click', async () => {
     const dispatchSpy = vi.spyOn(hooks, 'useAppDispatch');
 
-    renderWithProviders(<Preferences />);
+    renderWithProviders(<Settings />);
 
     const user = userEvent.setup();
 
@@ -25,7 +27,7 @@ describe('Preferences: Form switch', () => {
   });
 
   it('renders in disabled state when basic mode is on', () => {
-    renderWithProviders(<Preferences />, {
+    renderWithProviders(<Settings />, {
       preloadedState: {
         ...initialState,
         params: {
@@ -45,11 +47,11 @@ describe('Preferences: Form switch', () => {
   });
 });
 
-describe('Preferences: Basic Mode switch', () => {
+describe('Settings: Basic Mode switch', () => {
   it('dispatches on click', async () => {
     const dispatchSpy = vi.spyOn(hooks, 'useAppDispatch');
 
-    renderWithProviders(<Preferences />, {
+    renderWithProviders(<Settings />, {
       preloadedState: {
         ...initialState,
         preferences: {
@@ -72,12 +74,12 @@ describe('Preferences: Basic Mode switch', () => {
   });
 });
 
-describe('Preferences: Side Panel switch', () => {
+describe('Settings: Side Panel switch', () => {
   it('dispatches, shows a toast, and updates the side panel behavior on click', async () => {
     const dispatchSpy = vi.spyOn(hooks, 'useAppDispatch');
     const showToastSpy = vi.spyOn(utils, 'showToast');
 
-    renderWithProviders(<Preferences />, {
+    renderWithProviders(<Settings />, {
       preloadedState: {
         ...initialState,
         preferences: {

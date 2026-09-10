@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import { Input } from '@/components/ui/input';
+import { useId, useState } from 'react';
+
 import { Button } from '@/components/ui/button';
-import { showToast } from '@/utils/utils';
+import { Input } from '@/components/ui/input';
 import useTypewriter from '@/hooks/useTypewriter';
+import { showToast } from '@/utils/utils';
 
 interface FormType {
   label: string;
@@ -15,7 +16,7 @@ interface FormType {
   onSubmit: (value: string) => void;
 }
 
-const Form: React.FC<FormType> = ({
+const Form = ({
   label,
   placeholder,
   button,
@@ -24,9 +25,10 @@ const Form: React.FC<FormType> = ({
   typingPlaceholders,
   toastMessage,
   onSubmit,
-}) => {
+}: FormType) => {
   const [inputValue, setInputValue] = useState('');
   const animatedPlaceholder = useTypewriter(typingPlaceholders ?? []);
+  const inputId = useId();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,10 +43,13 @@ const Form: React.FC<FormType> = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} role="form" className={className}>
-      <label className="pb-1 block text-xxs uppercase opacity-50">{label}</label>
+    <form onSubmit={handleSubmit} className={className}>
+      <label htmlFor={inputId} className="pb-1 block text-xxs uppercase opacity-50">
+        {label}
+      </label>
       <div className="flex gap-2">
         <Input
+          id={inputId}
           type="text"
           className="text-xs flex-1"
           placeholder={typingPlaceholders ? animatedPlaceholder || placeholder : placeholder}

@@ -1,11 +1,21 @@
-import { ReactElement } from 'react';
-import { render, RenderOptions } from '@testing-library/react';
 import { configureStore } from '@reduxjs/toolkit';
+import { render, RenderOptions } from '@testing-library/react';
+import { ReactElement } from 'react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
+import { vi } from 'vitest';
+
+import { Group, Param, Preferences } from '@/types';
+
+import groupsSlice from '../src/features/groups/groups-slice';
 import paramsSlice from '../src/features/params/params-slice';
 import preferencesSlice from '../src/features/preferences/preferences-slice';
-import { Param, Preferences } from '@/types';
+
+export const mockStorageLocalGet = (value: Record<string, unknown>) => {
+  vi.mocked(chrome.storage.local.get).mockImplementation(
+    (() => Promise.resolve(value)) as typeof chrome.storage.local.get,
+  );
+};
 
 export const initialState = {
   params: {
@@ -21,6 +31,9 @@ export const initialState = {
     showGroups: false,
     showForm: true,
   } as Preferences,
+  groups: {
+    data: [] as Group[],
+  },
 };
 
 const createMockStore = (preloadedState = {}) =>
@@ -28,6 +41,7 @@ const createMockStore = (preloadedState = {}) =>
     reducer: {
       params: paramsSlice,
       preferences: preferencesSlice,
+      groups: groupsSlice,
     },
     preloadedState,
   });

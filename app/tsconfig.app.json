@@ -20,5 +20,5 @@
     "paths": { "@/*": ["./src/*"], "@test-utils": ["./test/test-utils.tsx"] },
     "types": ["vitest/globals", "@testing-library/jest-dom", "chrome"]
   },
-  "include": ["src"]
+  "include": ["src", "test"]
 }

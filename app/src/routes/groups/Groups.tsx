@@ -1,17 +1,18 @@
+import { CheckIcon, Cross2Icon, DotsVerticalIcon, Pencil1Icon, TrashIcon } from '@radix-ui/react-icons';
+import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '@/app/hooks';
-import { addGroup, removeGroup, updateGroup, activateGroup } from '@/features/groups/groups-slice';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import Form from '@/components/ui/Form';
-import * as DM from '@/components/ui/dropdown-menu';
-import { Group } from '@/types';
-import { nanoid } from 'nanoid';
-import { CheckIcon, Cross2Icon, DotsVerticalIcon, Pencil1Icon, TrashIcon } from '@radix-ui/react-icons';
-import { GENERAL_GROUP } from '@/constants';
 
-const Groups: React.FC = () => {
+import { useAppDispatch, useAppSelector } from '@/app/hooks';
+import Form from '@/components/form/Form';
+import { Button } from '@/components/ui/button';
+import * as DM from '@/components/ui/dropdown-menu';
+import { Input } from '@/components/ui/input';
+import { GENERAL_GROUP } from '@/constants';
+import { activateGroup,addGroup, removeGroup, updateGroup } from '@/features/groups/groups-slice';
+import { Group } from '@/types';
+
+const Groups = () => {
   const [editedGroup, setEditedGroup] = useState<Group | null>(null);
   const { data: groups } = useAppSelector((state) => state.groups);
   const [searchParams] = useSearchParams();

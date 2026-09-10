@@ -1,6 +1,6 @@
-import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import { defineConfig } from 'vitest/config';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -37,7 +37,7 @@ export default defineConfig({
         'src/features/*',
         'src/components/ui/icons/*',
         'src/components/ui', // shadcn components
-        'src/components/theme-provider.tsx', // shadcn theme provider
+        'src/providers/*',
         'src/hooks/use-toast.ts', // shadcn toast hook
         'src/constants/*',
         'src/main.tsx',

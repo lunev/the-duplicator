@@ -1,5 +1,7 @@
 import { ChatBubbleIcon } from '@radix-ui/react-icons';
-import FloatingPopup from '@/components/floating-popup';
+
+import FloatingPopup from '@/components/floating-popup/FloatingPopup';
+import { SUPPORT_URL } from '@/constants';
 
 const SupportPopup = () => (
   <FloatingPopup
@@ -8,7 +10,7 @@ const SupportPopup = () => (
     icon={<ChatBubbleIcon className="mt-0.5 size-3.5 shrink-0" />}
     messages={['Have a question?', 'Got a suggestion for us?', 'Ran into a problem or bug?']}
     linkText="Get support here"
-    linkHref="https://chromewebstore.google.com/detail/the-duplicator/cmbkalfnmgbghjoghgcplcmcijbdijei/support"
+    linkHref={SUPPORT_URL}
   />
 );
 

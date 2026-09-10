@@ -1,16 +1,3 @@
-import { useEffect, useMemo, useState } from 'react';
-import { useAppSelector, useAppDispatch } from '@/app/hooks';
-import useParamsShortcut from '@/hooks/useParamsShortcut';
-import { removeParam, updateParam, updateAllParams } from '@/features/params/params-slice';
-import { setPreference } from '@/features/preferences/preferences-slice';
-import { moveParamToGroup, removeParamFromGroup, removeParamFromAllGroups } from '@/features/groups/groups-slice';
-import { Group, Param } from '@/types';
-import { createTab, updateTab, showToast } from '@/utils/utils';
-import { reorderParams } from '@/utils/reorderParams';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import * as DM from '@/components/ui/dropdown-menu';
-import WarningMessage from '@/components/ui/WarningMessage';
 import {
   ArchiveIcon,
   CheckIcon,
@@ -22,12 +9,32 @@ import {
   Pencil1Icon,
   TrashIcon,
 } from '@radix-ui/react-icons';
+import { useEffect, useMemo, useState } from 'react';
+
+import { useAppDispatch, useAppSelector } from '@/app/hooks';
+import { Button } from '@/components/ui/button';
+import * as DM from '@/components/ui/dropdown-menu';
+import { Input } from '@/components/ui/input';
+import WarningMessage from '@/components/warning-message/WarningMessage';
+import { moveParamToGroup, removeParamFromAllGroups, removeParamFromGroup } from '@/features/groups/groups-slice';
+import { removeParam, updateAllParams, updateParam } from '@/features/params/params-slice';
+import { setPreference } from '@/features/preferences/preferences-slice';
+import useParamsShortcut from '@/hooks/useParamsShortcut';
 import { cn } from '@/lib/utils';
+import { Group, Param } from '@/types';
+import { reorderParams } from '@/utils/reorderParams';
+import { createTab, showToast, updateTab } from '@/utils/utils';
 
-const KEY_CLASS =
-  'min-w-5 h-5 flex items-center justify-center px-1 text-xxs text-center border rounded drop-shadow-xs';
+const handleCopy = async (param: Param) => {
+  try {
+    await navigator.clipboard.writeText(param.title);
+    showToast('Copied to clipboard');
+  } catch {
+    showToast('Failed to copy to clipboard', 'destructive');
+  }
+};
 
-const ParamsList: React.FC = () => {
+const ParamsList = () => {
   const [editedParam, setEditedParam] = useState<Param | null>(null);
   const [keydownWarning, setKeydownWarning] = useState<boolean>(false);
   const [draggedId, setDraggedId] = useState<string | null>(null);
@@ -52,15 +59,6 @@ const ParamsList: React.FC = () => {
   };
 
   const handleOpenTab = (paramURL: string) => (preferences.newTab ? createTab(paramURL) : updateTab(paramURL));
-
-  const handleCopy = async (param: Param) => {
-    try {
-      await navigator.clipboard.writeText(param.title);
-      showToast('Copied to clipboard');
-    } catch {
-      showToast('Failed to copy to clipboard', 'destructive');
-    }
-  };
 
   const moveToGroup = (param: Param, group: Group) => {
     if (!group.items.includes(param.id)) {
@@ -164,7 +162,7 @@ const ParamsList: React.FC = () => {
               <button
                 type="button"
                 className={cn(
-                  KEY_CLASS,
+                  'min-w-5 h-5 flex items-center justify-center px-1 text-xxs text-center border rounded drop-shadow-xs',
                   editedParam?.id === param.id ? 'cursor-default' : 'cursor-grab active:cursor-grabbing',
                 )}
                 draggable={editedParam?.id !== param.id}
@@ -229,7 +227,7 @@ const ParamsList: React.FC = () => {
                   <>
                     <DM.DropdownMenu>
                       <DM.DropdownMenuTrigger asChild>
-                        <Button size="icon-xs" variant="round">
+                        <Button size="icon-xs" variant="round" aria-label="More actions">
                           <DotsVerticalIcon />
                         </Button>
                       </DM.DropdownMenuTrigger>

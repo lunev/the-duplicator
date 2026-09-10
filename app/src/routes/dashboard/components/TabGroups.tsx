@@ -1,13 +1,14 @@
+import { ArchiveIcon, DotsVerticalIcon, EyeNoneIcon, PlusCircledIcon } from '@radix-ui/react-icons';
 import { useNavigate } from 'react-router-dom';
+
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
+import * as DM from '@/components/ui/dropdown-menu';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { GENERAL_GROUP, ROUTES } from '@/constants';
 import { activateGroup } from '@/features/groups/groups-slice';
 import { setPreference } from '@/features/preferences/preferences-slice';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import * as DM from '@/components/ui/dropdown-menu';
-import { ArchiveIcon, DotsVerticalIcon, EyeNoneIcon, PlusCircledIcon } from '@radix-ui/react-icons';
-import { GENERAL_GROUP } from '@/constants';
 
-const TabGroups: React.FC = () => {
+const TabGroups = () => {
   const { data: groups } = useAppSelector((state) => state.groups);
   const selectedGroupId = groups.find((group) => group.selected)?.id || GENERAL_GROUP;
   const navigate = useNavigate();
@@ -40,10 +41,10 @@ const TabGroups: React.FC = () => {
           <DM.DropdownMenuContent className="mr-5 [&_svg]:w-[12px] [&_svg]:h-[12px]">
             <DM.DropdownMenuLabel>Groups</DM.DropdownMenuLabel>
             <DM.DropdownMenuSeparator />
-            <DM.DropdownMenuItem onClick={() => navigate('/groups')}>
+            <DM.DropdownMenuItem onClick={() => navigate(ROUTES.GROUPS)}>
               <ArchiveIcon /> Manage
             </DM.DropdownMenuItem>
-            <DM.DropdownMenuItem onClick={() => navigate('/groups?add')}>
+            <DM.DropdownMenuItem onClick={() => navigate(`${ROUTES.GROUPS}?add`)}>
               <PlusCircledIcon /> Add
             </DM.DropdownMenuItem>
             <DM.DropdownMenuItem onClick={() => dispatch(setPreference({ property: 'showGroups', value: false }))}>

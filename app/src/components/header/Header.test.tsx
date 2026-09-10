@@ -1,19 +1,14 @@
-import { handleExport } from '@/utils/utils';
-import Header from './Header';
-import { renderWithProviders, initialState } from '@test-utils';
+import { initialState,renderWithProviders } from '@test-utils';
 import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
+import { handleExport } from '@/utils/utils';
+
+import Header from './Header';
 
 vi.mock('@/utils/utils', () => ({
   handleExport: vi.fn(),
 }));
-
-const { mockNavigate } = vi.hoisted(() => ({ mockNavigate: vi.fn() }));
-
-vi.mock('react-router-dom', async () => {
-  const actual = await vi.importActual<typeof import('react-router-dom')>('react-router-dom');
-  return { ...actual, useNavigate: () => mockNavigate };
-});
 
 describe('Header', () => {
   it('displays header without "Basic Mode" badge by default', () => {
@@ -77,7 +72,7 @@ describe('Header', () => {
     });
   });
 
-  it('navigates to the import params page when "Import Parameters" is clicked', async () => {
+  it('links "Import Parameters" to the import params page', async () => {
     renderWithProviders(<Header />);
 
     const user = userEvent.setup();
@@ -87,13 +82,7 @@ describe('Header', () => {
       await user.click(dropdownTriggerButton);
     }
 
-    const importParamsButton = screen.getByText(/import parameters/i);
-    if (importParamsButton) {
-      await user.click(importParamsButton);
-    }
-
-    await waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalledWith('/import-params');
-    });
+    const importParamsLink = screen.getByText(/import parameters/i).closest('a');
+    expect(importParamsLink).toHaveAttribute('href', '/import-params');
   });
 });

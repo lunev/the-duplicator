@@ -1,14 +1,9 @@
-import { vi } from 'vitest';
-import { renderHook, waitFor, act } from '@testing-library/react';
+import { mockStorageLocalGet } from '@test-utils';
+import { act,renderHook, waitFor } from '@testing-library/react';
+
 import { useFloatingPopup } from './useFloatingPopup';
 
 const DAY_MS = 24 * 60 * 60 * 1000;
-
-const mockStorageLocalGet = (value: Record<string, unknown>) => {
-  vi.mocked(chrome.storage.local.get).mockImplementation(
-    (() => Promise.resolve(value)) as typeof chrome.storage.local.get,
-  );
-};
 
 describe('useFloatingPopup', () => {
   it('shows on first-ever run (no prior storage) without writing storage', async () => {

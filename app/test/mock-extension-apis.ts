@@ -1,6 +1,6 @@
 import { vi } from 'vitest';
 
-global.chrome = {
+vi.stubGlobal('chrome', {
   storage: {
     sync: {
       set: vi.fn(),
@@ -27,4 +27,4 @@ global.chrome = {
   sidePanel: {
     setPanelBehavior: vi.fn(),
   },
-} as unknown as typeof chrome;
+} as unknown as typeof chrome);

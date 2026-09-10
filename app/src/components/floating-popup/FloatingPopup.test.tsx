@@ -1,12 +1,7 @@
-import { vi } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import FloatingPopup from './floating-popup';
+import { mockStorageLocalGet } from '@test-utils';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
-const mockStorageLocalGet = (value: Record<string, unknown>) => {
-  vi.mocked(chrome.storage.local.get).mockImplementation(
-    (() => Promise.resolve(value)) as typeof chrome.storage.local.get,
-  );
-};
+import FloatingPopup from './FloatingPopup';
 
 const props = {
   storageKey: 'k',

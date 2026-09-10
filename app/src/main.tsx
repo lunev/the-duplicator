@@ -1,21 +1,21 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import store, { persistor } from '@/app/store.ts';
-import { PersistGate } from 'redux-persist/integration/react';
-import App from '@/App.tsx';
 import '@/assets/index.css';
 
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+
+import App from '@/App.tsx';
+import AppProviders from '@/providers/AppProviders';
+
+// Popup and side panel share this same entry point; manifest.json opens the side panel with
+// ?context=sidepanel so index.css can size it differently (see html.side-panel rules).
 if (new URLSearchParams(window.location.search).get('context') === 'sidepanel') {
   document.documentElement.classList.add('side-panel');
 }
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <App />
-      </PersistGate>
-    </Provider>
+    <AppProviders>
+      <App />
+    </AppProviders>
   </StrictMode>,
 );

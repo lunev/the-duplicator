@@ -1,9 +1,10 @@
-import { ReactNode } from 'react';
 import { Cross2Icon } from '@radix-ui/react-icons';
+import { ReactNode } from 'react';
+
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import { useFloatingPopup } from '@/hooks/useFloatingPopup';
 import useTypewriter from '@/hooks/useTypewriter';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 export type FloatingPopupPosition = 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left';

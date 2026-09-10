@@ -1,14 +1,16 @@
 import { nanoid } from 'nanoid';
+
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
-import { addParam } from '@/features/params/params-slice';
+import Form from '@/components/form/Form';
 import { addParamToGroup } from '@/features/groups/groups-slice';
+import { addParam } from '@/features/params/params-slice';
 import { Param } from '@/types';
 import { createTab, updateTab } from '@/utils/utils';
-import Form from '@/components/ui/Form';
+
 import ParamsList from './components/Params';
 import TabGroups from './components/TabGroups';
 
-const Dashboard: React.FC = () => {
+const Dashboard = () => {
   const { basicMode, showForm, showGroups } = useAppSelector((state) => state.preferences);
   const preferences = useAppSelector((state) => state.preferences);
   const { data: groups } = useAppSelector((state) => state.groups);

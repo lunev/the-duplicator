@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Tab Duplicator: Custom URL Parameters",
   "description": "Duplicate the current tab with custom URL parameters.",
-  "version": "7.6.0",
+  "version": "7.6.1",
   "action": {
     "default_popup": "index.html",
     "default_icon": "icons/logo128x128.png",

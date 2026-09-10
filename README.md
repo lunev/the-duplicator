@@ -61,6 +61,9 @@ Google Chrome on Windows and Mac.
 
 All notable user-facing changes are listed here. Internal work like dependency upgrades, refactors, and build tooling is left out.
 
+### 7.6.1 - 2026-09-10
+- **Accessibility fixes**: The import-file picker, the per-parameter actions menu, and the "Add parameter" form are now fully keyboard- and screen-reader-accessible — these previously couldn't be operated without a mouse.
+
 ### 7.6.0 - 2026-09-09
 - **New name**: Renamed to "Tab Duplicator: Custom URL Parameters" to be easier to find in the Chrome Web Store — same extension, same data, no action needed.
 - **Drag-to-reorder**: Reorder your saved URL parameters by dragging the handle — list order determines which number key (1-9) opens each one, so you can put your most-used parameters first.

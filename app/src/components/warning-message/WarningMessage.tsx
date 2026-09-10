@@ -1,12 +1,13 @@
-import { Button } from '@/components/ui/button';
 import { Cross1Icon } from '@radix-ui/react-icons';
+
+import { Button } from '@/components/ui/button';
 
 interface WarningMessageType {
   text: string;
   onClose: () => void;
 }
 
-const WarningMessage: React.FC<WarningMessageType> = ({ text, onClose }) => {
+const WarningMessage = ({ text, onClose }: WarningMessageType) => {
   return (
     <div className="mb-3 py-2 px-3 flex items-start gap-2 rounded text-xs bg-orange-100 text-orange-700 dark:bg-orange-950 dark:text-orange-300">
       <p>{text}</p>

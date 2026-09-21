@@ -11,6 +11,7 @@ The Duplicator is a Chrome Manifest V3 extension (popup + side panel + backgroun
 - `app/` — the entire buildable project: `package.json`, source, config, tests, build scripts. **Run all npm commands from inside `app/`, not the repo root.**
 - `design/` — promotional art assets, not part of the build.
 - `chrome-webstore/` — Chrome Web Store listing material: `releases/` (committed release zips), `description.txt` (store description, ≤16,000 chars, plain text), `short-description.txt` (store summary shown in search results/category pages, ≤132 chars, plain text), `testing-instructions.txt` (reviewer testing steps, ≤500 chars, plain text). All three `.txt` files must stay within those limits since they're pasted verbatim into Chrome Web Store form fields.
+- `site/` — public landing page: a static Vite + React SPA with its own `package.json` (run its npm commands from inside `site/`: `npm run dev`, `npm run build`). Copy lives in `site/src/content.ts`; keep it in sync by hand with `chrome-webstore/description.txt`. `.github/workflows/pages.yml` deploys it to https://lunev.github.io/the-duplicator/ on pushes to `main` that touch `site/`. Needs a public repo with Settings → Pages → Source set to "GitHub Actions", and `base` in `site/vite.config.ts` must equal the repo name.
 
 Two entry points, both defined in `app/vite.config.ts`:
 - `index.html` → `src/main.tsx`/`src/App.tsx` — popup and side panel (both use the same page); routes include `/import-params` (JSON import) and `/settings` (preference toggles)
@@ -37,4 +38,4 @@ Run from `app/`:
 
 - Built release zips under `chrome-webstore/releases/*.zip` are intentionally committed to git as release artifacts. Don't run `npm run release` just to "verify" it works unless you intend to regenerate the current version's zip — it overwrites the zip in place with new (differently-timestamped) archive bytes even when the source is unchanged. Plain `npm run build` is safe to run at any time since it no longer touches the zip.
 - Test coverage thresholds in `app/vite.config.ts` only apply to a narrow subset of `src/**` (many dirs like `src/features/*` are excluded) — don't treat the 80/70/80/85% thresholds as covering the whole codebase.
-- No CI is configured (no `.github/workflows`) — there's no automated gate on lint/test/build.
+- No CI gate on lint/test/build — the only workflow is `.github/workflows/pages.yml`, which just deploys `site/`.

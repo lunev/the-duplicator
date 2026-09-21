@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://chromewebstore.google.com/detail/the-duplicator/cmbkalfnmgbghjoghgcplcmcijbdijei">Install from the Chrome Web Store</a>
+  <a href="https://chromewebstore.google.com/detail/the-duplicator/cmbkalfnmgbghjoghgcplcmcijbdijei">Install from the Chrome Web Store</a> · <a href="https://lunev.github.io/the-duplicator/">Website</a>
 </p>
 
 ## Features

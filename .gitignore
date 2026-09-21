@@ -23,3 +23,6 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+
+# --- Landing page build ---
+site/dist/

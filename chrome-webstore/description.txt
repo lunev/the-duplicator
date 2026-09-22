@@ -28,4 +28,4 @@ PERMISSIONS
 SUPPORT
 Found a bug or have a feature request? Use the Support tab on this listing, or the Support link in the extension's header menu.
 
-Version 7.6.0 — Renamed to Tab Duplicator: Custom URL Parameters, added drag-to-reorder for your saved parameters, and rewrote this listing with a full feature breakdown.
+Open source on GitHub: github.com/lunev/the-duplicator

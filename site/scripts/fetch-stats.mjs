@@ -35,7 +35,7 @@ function parseRating(html) {
 
 async function main() {
   const content = await readFile(contentPath, "utf8");
-  const id = content.match(/\bid:\s*"([a-p]{32})"/)?.[1];
+  const id = content.match(/\bid:\s*["']([a-p]{32})["']/)?.[1];
   if (!id) throw new Error("extension id not found in content.ts");
 
   const res = await fetch(`https://chromewebstore.google.com/detail/${id}`, {
@@ -48,8 +48,10 @@ async function main() {
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
   const html = await res.text();
+  // The store reports 0 for extensions with no ratings yet; hide it instead.
+  const rating = parseRating(html);
   const stats = {
-    rating: parseRating(html),
+    rating: rating ? rating : null,
     users: parseUsers(html),
     fetchedAt: new Date().toISOString(),
   };

@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://lunev.github.io/the-duplicator/sitemap.xml
